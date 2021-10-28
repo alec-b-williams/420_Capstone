@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/alec-b-williams.github.io/420_Capstone/static/css/main.5739ad41.chunk.css",
+    "main.js": "/alec-b-williams.github.io/420_Capstone/static/js/main.c940f60c.chunk.js",
+    "main.js.map": "/alec-b-williams.github.io/420_Capstone/static/js/main.c940f60c.chunk.js.map",
+    "runtime-main.js": "/alec-b-williams.github.io/420_Capstone/static/js/runtime-main.1cf68ae5.js",
+    "runtime-main.js.map": "/alec-b-williams.github.io/420_Capstone/static/js/runtime-main.1cf68ae5.js.map",
+    "static/js/2.08a4eb49.chunk.js": "/alec-b-williams.github.io/420_Capstone/static/js/2.08a4eb49.chunk.js",
+    "static/js/2.08a4eb49.chunk.js.map": "/alec-b-williams.github.io/420_Capstone/static/js/2.08a4eb49.chunk.js.map",
+    "static/js/3.f9d0d908.chunk.js": "/alec-b-williams.github.io/420_Capstone/static/js/3.f9d0d908.chunk.js",
+    "static/js/3.f9d0d908.chunk.js.map": "/alec-b-williams.github.io/420_Capstone/static/js/3.f9d0d908.chunk.js.map",
+    "index.html": "/alec-b-williams.github.io/420_Capstone/index.html",
+    "static/css/main.5739ad41.chunk.css.map": "/alec-b-williams.github.io/420_Capstone/static/css/main.5739ad41.chunk.css.map",
+    "static/js/2.08a4eb49.chunk.js.LICENSE.txt": "/alec-b-williams.github.io/420_Capstone/static/js/2.08a4eb49.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/alec-b-williams.github.io/420_Capstone/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1cf68ae5.js",
+    "static/js/2.08a4eb49.chunk.js",
+    "static/css/main.5739ad41.chunk.css",
+    "static/js/main.c940f60c.chunk.js"
+  ]
+}
