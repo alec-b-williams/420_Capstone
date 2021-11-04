@@ -4,7 +4,7 @@ import MyComponent from "./MyComponent.js"
 
 function App() {
 
-  let response = fetch("localhost:8080/greeting")
+  let response = fetch("/greeting")
   .then(response => response.text())
   .then(data => console.log(data));
 
