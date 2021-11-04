@@ -3,7 +3,7 @@ import ReactComponent from "react";
 
 function MyComponent(props) {
     return (
-      <button>{props.text}</button>
+      <button className = 'api-button'>{props.text}</button>
     );
 }
 

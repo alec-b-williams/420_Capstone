@@ -1,6 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
+import './MyComponent.css';
 import MyComponent from "./MyComponent.js"
+
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <MyComponent text="blahblahblah" />
+        <MyComponent text="Click Here" />
       </header>
     </div>
   );

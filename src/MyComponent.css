@@ -1,0 +1,17 @@
+.api-button {
+    background-color: skyblue;
+    text-decoration: uppercase;
+    font-size: 1.2em;
+    font-weight: 500;
+    padding: 20px 50px;
+    margin-top: 15px;
+    border-radius: 30px;
+    color:black;
+    outline: none;
+    border: none;
+}
+
+.api-button:hover {
+    background-color: gray;
+}
+
