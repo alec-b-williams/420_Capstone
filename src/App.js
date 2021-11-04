@@ -8,8 +8,6 @@ function App() {
   .then(response => response.text())
   .then(data => console.log(data));
 
-  var html;
-
   return (
     <div className="App">
       <header className="App-header">
