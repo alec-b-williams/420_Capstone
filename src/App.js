@@ -19,13 +19,16 @@ class App extends React.Component {
     let tableEntries = [];
 
     //do a for-loop here to generate a list of CustomTableEntries
-    if (this.state.orders != null) {
-      for (var i=0; i < this.state.orders.data.length; i++) {
-        let order = this.state.orders.data[i];
-        //console.log(order._id);
-        tableEntries.push(<CustomTableEntry text={order.orderData.customerName} key={order._id}/>)
+    //for (var i=0; i < this.state.orders.data.length; i++) {
+    this.state.orders?.data.forEach( order => {
+      console.log(order._id)
+      tableEntries.push(<CustomTableEntry 
+        key={order._id}
+        name={order.orderData.customerName}
+        date={order.orderData.date} 
+        status={order.orderData.status}/>)
       }
-    }
+    );
 
     return (
       <div className="App">
