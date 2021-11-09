@@ -4,7 +4,7 @@ import './CustomButton.css';
 
 function CustomButton(props) {
     return (
-      <button className='api-button' onClick={props.onClick}>{props.text}</button>
+      <button className= 'api-button' onClick={props.onClick}>{props.text}</button>
     );
 }
 

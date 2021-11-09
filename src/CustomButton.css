@@ -3,8 +3,10 @@
     text-decoration: uppercase;
     font-size: 1.2em;
     font-weight: 500;
-    padding: 20px 50px;
-    margin-top: 15px;
+    padding: 10px 30px;
+    position: fixed;
+    top: 2.5%;
+    right: 83%;
     border-radius: 30px;
     color:black;
     outline: none;
