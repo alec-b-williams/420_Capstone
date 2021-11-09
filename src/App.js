@@ -16,7 +16,7 @@ class App extends React.Component {
 
   render() {
 
-    let tableEntries = {};
+    let tableEntries = [];
 
     //do a for-loop here to generate a list of CustomTableEntries
 
@@ -24,7 +24,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <CustomButton text="Get Orders" onClick={this.fetchOrders} />
-          <div class='tableContainer'>
+          <div className='tableContainer'>
             {tableEntries}
           </div>
         </header>
