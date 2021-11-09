@@ -1,8 +1,7 @@
 import './App.css';
-import './MyComponent.css';
+import './CustomButton.css';
 import React from "react";
 import CustomButton from "./CustomButton.js"
-
 
 class App extends React.Component {
   constructor(props) {
