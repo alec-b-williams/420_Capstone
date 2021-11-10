@@ -12,6 +12,8 @@
 }
 
 .App-header {
+  position: absolute;
+  left: 450px;
   background-color: white;
   min-height: 100vh;
   display: flex;
@@ -19,6 +21,10 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+}
+
+.tableContainer {
+  height: 920px;
 }
 
 

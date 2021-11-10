@@ -1,14 +1,16 @@
+
+/* Note: Find a way to have it dynamically scalable */
 .api-button {
     background-color: skyblue;
-    text-decoration: uppercase;
-    font-size: 1.2em;
-    display: flex;
+    font-size: 1.5em;
     font-weight: bold;
-    padding: 10px 30px;
+    height: 50px;
+    width: 175px;
     position: absolute;
-    bottom: 875px;
+    top: 3%;
     right: 87%;
-    border-radius: 30px;
+    align-items: center;
+    border-radius: 25px;
     color:black;
     outline: none;
     border: none;

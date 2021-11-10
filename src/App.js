@@ -37,8 +37,8 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <CustomButton text="Get Orders" onClick={this.fetchOrders} />
         <header className="App-header">
-          <CustomButton text="Get Orders" onClick={this.fetchOrders} />
           <div className='tableContainer'>
             {tableEntries}
           </div>  
