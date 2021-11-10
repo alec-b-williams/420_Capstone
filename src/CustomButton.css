@@ -2,10 +2,11 @@
     background-color: skyblue;
     text-decoration: uppercase;
     font-size: 1.2em;
-    font-weight: 500;
+    display: flex;
+    font-weight: bold;
     padding: 10px 30px;
-    position: sticky;
-    top: 2.5%;
+    position: absolute;
+    bottom: 875px;
     right: 87%;
     border-radius: 30px;
     color:black;
