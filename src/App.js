@@ -17,6 +17,11 @@ class App extends React.Component {
   render() {
 
     let tableEntries = [];
+    
+    tableEntries.push(<CustomTableEntry
+    name={"Name"}
+    date={"Date"}
+    status={"Status"}/>)
 
     //do a for-loop here to generate a list of CustomTableEntries
     //for (var i=0; i < this.state.orders.data.length; i++) {
@@ -36,7 +41,7 @@ class App extends React.Component {
           <CustomButton text="Get Orders" onClick={this.fetchOrders} />
           <div className='tableContainer'>
             {tableEntries}
-          </div>
+          </div>  
         </header>
       </div>
     );
