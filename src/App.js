@@ -36,14 +36,16 @@ class App extends React.Component {
     );
 
     return (
-      <div className="App">
+      <section>
+        <div className="Button">
         <CustomButton text="Get Orders" onClick={this.fetchOrders} />
-        <header className="App-header">
+       </div>
+      <div className="App">
           <div className='tableContainer'>
             {tableEntries}
           </div>  
-        </header>
       </div>
+      </section>
     );
   }
 
