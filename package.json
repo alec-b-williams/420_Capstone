@@ -1,6 +1,6 @@
 {
-  "name": "hp_frontend",
-  "homepage": "alec-b-williams.github.io/420_Capstone",
+  "name": "420-frontend",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
