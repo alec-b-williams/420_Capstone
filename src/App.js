@@ -52,7 +52,12 @@ class App extends React.Component {
   fetchOrders() {
     var data;
 
-    fetch("/orders")
+    fetch("/orders", {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
     .then(response => response.json())
     .then(_data => data = _data)
     .then(() => console.log(data))
