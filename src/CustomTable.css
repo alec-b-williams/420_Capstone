@@ -1,28 +1,29 @@
 .tableEntry {
-    display: flex;
-    border: 2px solid black;
+    display: flex;  
+    border: 1px solid gray;
 }
 
 .holder {
-    width: 400px;
+    width: 350px;
     margin: 10px;
 }
 
 /* Min-height will change the spacing inside the box from the word */
 .orderCustName {
     min-height: 5px;
-    width: 300px;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .orderDate {
     min-height: 5px;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .orderStatus {
     min-height: 5px;
-    width: 200px;
+    font-size: 24px;
     font-weight: bold;
 }
 

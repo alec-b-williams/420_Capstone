@@ -7,17 +7,20 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.App {
+.Table {
+  text-align: center;
   position: absolute;
   top: 2.5%;
-  left: 22.5%;
-  background-color: white;
+  left: 23%;
+  background-color: rgb(233, 233, 233);
+  border-radius: 15px;
+  border: 4px solid gray;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
 }
+
 
 
 

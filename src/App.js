@@ -34,13 +34,14 @@ class App extends React.Component {
         status={order.orderData.status}/>)
       }
     );
-
+    
+    // Remind to self: need a switch page for table.
     return (
       <section>
         <div className="Button">
         <CustomButton text="Get Orders" onClick={this.fetchOrders} />
        </div>
-      <div className="App">
+      <div className="Table">
           <div className='tableContainer'>
             {tableEntries}
           </div>  
@@ -64,7 +65,7 @@ class App extends React.Component {
     .then(() => console.log(data))
     .then(() => this.setState({orders: data}))
     .catch((error) => {
-      console.error('Error:', error);
+    console.error('Error:', error);
     });
   }
 }
