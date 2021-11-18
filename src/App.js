@@ -1,10 +1,13 @@
 import './App.css';
-import './CustomButton.css';
+import './TableButton.css';
+import './SKUForm.css';
 import React from "react";
-import CustomButton from "./CustomButton.js"
-import CustomTableEntry from './CustomTable';
+import TableButton from "./TableButton.js"
+import CustomTableEntry from './CustomTable.js';
+import SKUForm from './SKUForm.js'
+import {useState} from 'react';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,16 +39,23 @@ class App extends React.Component {
     );
     
     // Remind to self: need a switch page for table.
+    // "Create Order" button needs to generate form when clicked on.
     return (
       <section>
-        <div className="Button">
-        <CustomButton text="Get Orders" onClick={this.fetchOrders} />
+        <div className="TableButton">
+          <TableButton text="Get Orders" onClick={this.fetchOrders} />
        </div>
-      <div className="Table">
-          <div className='tableContainer'>
-            {tableEntries}
-          </div>  
+
+      <div className="CustomTable">
+        {tableEntries} 
       </div>
+
+      <div className="SKUForm">
+        <button className="SKUButton" > Create Order </button>
+        <SKUForm trigger={true}>
+        </SKUForm>
+      </div>
+
       </section>
     );
   }
@@ -69,5 +79,3 @@ class App extends React.Component {
     });
   }
 }
-
-export default App;
