@@ -5,13 +5,13 @@ import React from "react";
 import TableButton from "./TableButton.js"
 import CustomTableEntry from './CustomTable.js';
 import SKUForm from './SKUForm.js'
-import {useState} from 'react';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       orders: null,
+      skupage: false,
     }
 
     this.fetchOrders = this.fetchOrders.bind(this);
@@ -38,8 +38,9 @@ export default class App extends React.Component {
       }
     );
     
-    // Remind to self: need a switch page for table.
-    // "Create Order" button needs to generate form when clicked on.
+    // Dynamic resolution scaling needs to be implemented later
+    // Will implement this during winter break: functionality is more important rn
+    // <button className="SKUButton" onClick={() => this.setState({skupage: this.state.skupage})}> Create Order </button>
     return (
       <section>
         <div className="TableButton">
@@ -51,11 +52,9 @@ export default class App extends React.Component {
       </div>
 
       <div className="SKUForm">
-        <button className="SKUButton" > Create Order </button>
         <SKUForm trigger={true}>
         </SKUForm>
       </div>
-
       </section>
     );
   }
