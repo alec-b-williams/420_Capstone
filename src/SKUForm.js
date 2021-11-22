@@ -5,18 +5,27 @@ function SKUForm(props) {
   let SKUOptions = [];
   let ComponentOptions = [];
 
-  props.SKUList?.data.forEach( SKU => {
-    SKUOptions.push(
-      <option value={SKU.productId}>{SKU.description}</option>
-    )
-  });
+  try {
+    props.SKUList?.data.forEach( SKU => {
+      SKUOptions.push(
+        <option value={SKU.productId}>{SKU.description}</option>
+      );
+    });
+  } catch {
+    console.log("Error generating SKUOptions");
+  }
 
-  props.ComponentList?.data.forEach( Component => {
-    ComponentOptions.push(
-      //TODO: change once components are implemented
-      //<option value={Component.productID}>{Component.description}</option>
-    )
-  });
+  try {
+    props.ComponentList?.data.forEach( Component => {
+      ComponentOptions.push(
+        //TODO: change once components are implemented
+        //<option value={Component.productID}>{Component.description}</option>
+      )
+    });
+  } catch {
+    console.log("Error generating ComponentOptions");
+  }
+  
 
   return (props.trigger) ? (
     <section>
