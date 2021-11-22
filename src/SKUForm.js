@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import './SKUForm.css';
 
 
@@ -18,4 +18,4 @@ function SKUForm(props) {
     ) : "";
 }
 
-export default SKUForm
+export default SKUForm;

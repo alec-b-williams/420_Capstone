@@ -1,80 +1,31 @@
 import './App.css';
 import './TableButton.css';
 import './SKUForm.css';
-import React from "react";
-import TableButton from "./TableButton.js"
-import CustomTableEntry from './CustomTable.js';
-import SKUForm from './SKUForm.js'
+import React from 'react';
+import { Switch, Route } from 'navigo-react';
+import ViewOrderPage from './ViewOrderPage';
+import NewOrderPage from './NewOrderPage';
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      orders: null,
-      skupage: false,
-    }
-
-    this.fetchOrders = this.fetchOrders.bind(this);
-  }
-
+  // Remind to self: need a switch page for table.
+  // "Create Order" button needs to generate form when clicked on.
   render() {
-
-    let tableEntries = [];
-    
-    tableEntries.push(<CustomTableEntry
-    name={"Name"}
-    date={"Date"}
-    status={"Status"}/>)
-
-    //do a for-loop here to generate a list of CustomTableEntries
-    //for (var i=0; i < this.state.orders.data.length; i++) {
-    this.state.orders?.data.forEach( order => {
-      console.log(order._id)
-      tableEntries.push(<CustomTableEntry 
-        key={order._id}
-        name={order.orderData.customerName}
-        date={order.orderData.date} 
-        status={order.orderData.status}/>)
-      }
-    );
-    
-    // Dynamic resolution scaling needs to be implemented later
-    // Will implement this during winter break: functionality is more important rn
-    // <button className="SKUButton" onClick={() => this.setState({skupage: this.state.skupage})}> Create Order </button>
     return (
-      <section>
-        <div className="TableButton">
-          <TableButton text="Get Orders" onClick={this.fetchOrders} />
-       </div>
-
-      <div className="CustomTable">
-        {tableEntries} 
-      </div>
-
-      <div className="SKUForm">
-        <SKUForm trigger={true}>
-        </SKUForm>
-      </div>
-      </section>
+      <>
+      <nav>
+        <a href="/" data-navigo>View Orders</a>
+        <a href="/new" data-navigo>New Order</a>
+      </nav>
+      <Switch>
+        <Route path="/">
+          <ViewOrderPage />
+        </Route>
+        <Route path="/new">
+          <NewOrderPage />
+        </Route>
+      </Switch>
+      </>
     );
-  }
-
-  //testing webhook again!!
-  fetchOrders() {
-    var data;
-
-    fetch("/orders", {
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-    })
-    .then(response => response.json())
-    .then(_data => data = _data)
-    .then(() => console.log(data))
-    .then(() => this.setState({orders: data}))
-    .catch((error) => {
-    console.error('Error:', error);
-    });
   }
 }
+
