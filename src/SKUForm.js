@@ -31,19 +31,19 @@ function SKUForm(props) {
     <section>
       <div className="pop-up">
           <div className="popup-inner">
-              <form id="sku selection"> 
-                <div>
-                  Name: 
-                  <input type="text" id="NameField"></input>
+              <form id="sku-selection"> 
+                <div className="userName">
+                  Name: 
+                  <input type="text" id="NameField" placeholder="Enter your Name"></input>
                 </div>
-                <div>
-                  SKU: 
+                <div className="skuSelect">
+                  SKU: 
                   <select name="SKU" onChange={(o) => props.setSKU(o.target.value)} id="SKUCombo">
                     {SKUOptions}
                   </select>
                 </div>
-                <div>
-                  Component:
+                <div className="compSelect">
+                  Component: 
                   <select name="Component" id="ComponentCombo">
                     {ComponentOptions}
                   </select>
