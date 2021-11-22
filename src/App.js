@@ -1,5 +1,6 @@
 import './styles/App.css';
 import './styles/TableButton.css';
+import './styles/CustomTable.css';
 import './styles/SKUForm.css';
 import React from 'react';
 import { Switch, Route } from 'navigo-react';
