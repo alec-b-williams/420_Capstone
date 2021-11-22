@@ -1,6 +1,6 @@
 import React from "react";
 import ReactComponent from "react";
-import './TableButton.css';
+import './styles/TableButton.css';
 
 function TableButton(props) {
     return (

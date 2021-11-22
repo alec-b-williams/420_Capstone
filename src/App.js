@@ -1,6 +1,6 @@
-import './App.css';
-import './TableButton.css';
-import './SKUForm.css';
+import './styles/App.css';
+import './styles/TableButton.css';
+import './styles/SKUForm.css';
 import React from 'react';
 import { Switch, Route } from 'navigo-react';
 import ViewOrderPage from './ViewOrderPage';
@@ -13,8 +13,8 @@ export default class App extends React.Component {
     return (
       <>
       <nav>
-        <a href="/" data-navigo>View Orders</a>
-        <a href="/new" data-navigo>New Order</a>
+        <button className='ViewO' href="/" data-navigo>View Orders</button>
+        <button className='NewO' href="/new" data-navigo>New Order</button>
       </nav>
       <Switch>
         <Route path="/">

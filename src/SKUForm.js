@@ -1,8 +1,6 @@
-import React from 'react';
-import './SKUForm.css';
+import React from 'react'
+import './styles/SKUForm.css';
 
-
-// <button className="close-btn" onClick={() => SKUForm.setTrigger(false)}>x</button>
 function SKUForm(props) {
     return (props.trigger) ? (
         <section>

@@ -1,5 +1,6 @@
 import React from 'react';
 import SKUForm from './SKUForm.js';
+import './styles/NewOrderPage.css';
 
 export default class NewOrderPage extends React.Component {
   
