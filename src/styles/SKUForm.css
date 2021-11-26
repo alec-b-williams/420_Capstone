@@ -16,7 +16,8 @@
 }
 
 .userName {
-    font-size: 24px;
+    font-size: 1.2em;
+    font-weight: bold;
     margin-bottom: 30px;
     margin-left: 14.9px;
     margin-top: 30px;
@@ -33,25 +34,29 @@
 }
 
 .skuSelect {
-    font-size: 24px;
+    font-size: 1.2em;
+    font-weight: bold;
     margin-bottom: 30px;
     margin-left: 14.9px;
     margin-top: 30px;
 }
 
 .skuSelect select[name="SKU"] {
-    width: 50px;
+    width: 190px;
+    outline: none;
 }
 
 .compSelect {
-    font-size: 24px;
+    font-size: 1.2em;
+    font-weight: bold;
     margin-bottom: 30px;
     margin-left: 14.9px;
     margin-top: 30px;
 }
 
 .compSelect select[name="Component"] {
-    width: 50px;
+    width: 95px;
+    outline: none;
 }
 
 .popup-inner .close-btn {

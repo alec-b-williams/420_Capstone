@@ -1,8 +1,24 @@
 import React from 'react';
 import SKUForm from './SKUForm.js';
 import './styles/NewOrderPage.css';
+import { NotificationManager, NotificationContainer } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+
 
 export default class NewOrderPage extends React.Component {
+  // We can add error case if need to 
+  createNotification = (handling) => {
+    return () => {
+      switch (handling) {
+        case 'success':
+          NotificationManager.success('200 OK', 'Order has sent');
+          break;
+        default:
+          return 'success'
+      }
+    };
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +39,7 @@ export default class NewOrderPage extends React.Component {
     return(
       <div>
         <div className="SKUForm">
-          <button className="SKUButton" > Create Order </button>
+          <button className="SKUButton" onClick={this.createNotification('success')}> Create Order </button>
           <SKUForm 
             SKUList={this.state.SKUs} 
             ComponentList={this.state.components}
@@ -31,6 +47,7 @@ export default class NewOrderPage extends React.Component {
             trigger={true}>
           </SKUForm>
         </div>
+        <NotificationContainer/>
       </div>
     )
   }
