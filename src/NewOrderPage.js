@@ -84,7 +84,7 @@ export default class NewOrderPage extends React.Component {
   fetchComponents() {
     var _components;
 
-    fetch("/components", {
+    fetch("/products?id=" + this.state.selSKU, {
       headers : {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
