@@ -29,10 +29,12 @@ export default class NewOrderPage extends React.Component {
     }
 
     this.fetchSKUs = this.fetchSKUs.bind(this);
+    this.fetchComponents = this.fetchComponents.bind(this);
   }
 
   componentDidMount() {
     this.fetchSKUs();
+    this.fetchComponents();
   }
 
   render() {
@@ -44,6 +46,7 @@ export default class NewOrderPage extends React.Component {
             SKUList={this.state.SKUs} 
             ComponentList={this.state.components}
             setSKU={(s) => this.updateSKU(s)}
+            setComponent={(c) => this.updateComponent(c)}
             trigger={true}>
           </SKUForm>
         </div>
@@ -52,6 +55,7 @@ export default class NewOrderPage extends React.Component {
     )
   }
 
+  // Sku Section
   fetchSKUs() {
     var _SKUs;
 
@@ -76,9 +80,28 @@ export default class NewOrderPage extends React.Component {
     this.fetchComponents(SKU);
   }
 
-  fetchComponents(SKU) {
-    var components;
+  // Component Section
+  fetchComponents() {
+    var _components;
 
-    //fetch()
+    fetch("/components", {
+      headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(_data => _components = _data)
+    .then(() => console.log(_components))
+    .then(() => this.setState({components: _components}))
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+
+  updateComponent(Component) {
+    console.log("Setting new Component: " + Component);
+    this.setState({selComponent: Component});
+    this.fetchComponents(Component);
   }
 }

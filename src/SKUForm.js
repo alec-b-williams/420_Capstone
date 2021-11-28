@@ -19,7 +19,7 @@ function SKUForm(props) {
     props.ComponentList?.data.forEach( Component => {
       ComponentOptions.push(
         //TODO: change once components are implemented
-        //<option value={Component.productID}>{Component.description}</option>
+        <option value={Component.productID}>{Component.description}</option>
       )
     });
   } catch {
@@ -44,7 +44,7 @@ function SKUForm(props) {
                 </div>
                 <div className="compSelect">
                   Component: 
-                  <select name="Component" id="ComponentCombo">
+                  <select name="Component" onChange={(o) => props.setComponent(o.target.value)} id="ComponentCombo">
                     {ComponentOptions}
                   </select>
                 </div>
