@@ -24,12 +24,16 @@ function SKUForm(props) {
   )
 
   try {
-    props.ComponentList?.data.forEach( Component => {
+    /*props.ComponentList?.forEach( Component => {
       ComponentOptions.push(
         //TODO: change once components are implemented
         <option value={Component.productID}>{Component.description}</option>
       )
-    });
+    });*/
+    ComponentOptions.push(
+      //TODO: change once components are implemented
+      <option value={props.ComponentList._id}>{props.ComponentList.description}</option>
+    )
   } catch {
     console.log("Error generating ComponentOptions");
   }
