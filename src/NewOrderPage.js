@@ -55,6 +55,22 @@ export default class NewOrderPage extends React.Component {
     )
   }
 
+  updateSKU(SKU) {
+    if (SKU != -1) {
+      console.log("Setting new SKU: " + SKU);
+      this.setState({selSKU: SKU});
+      this.fetchComponents(SKU);
+    }
+  }
+
+  updateComponent(Component) {
+    if (Component != -1) {
+      console.log("Setting new Component: " + Component);
+      this.setState({selComponent: Component});
+      this.fetchComponents(Component);
+    }
+  }
+
   // Sku Section
   fetchSKUs() {
     var _SKUs;
@@ -74,12 +90,6 @@ export default class NewOrderPage extends React.Component {
     });
   }
 
-  updateSKU(SKU) {
-    console.log("Setting new SKU: " + SKU);
-    this.setState({selSKU: SKU});
-    this.fetchComponents(SKU);
-  }
-
   // Component Section
   fetchComponents() {
     var _components;
@@ -97,11 +107,5 @@ export default class NewOrderPage extends React.Component {
     .catch((error) => {
       console.error('Error:', error);
     });
-  }
-
-  updateComponent(Component) {
-    console.log("Setting new Component: " + Component);
-    this.setState({selComponent: Component});
-    this.fetchComponents(Component);
   }
 }

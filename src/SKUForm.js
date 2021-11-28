@@ -5,6 +5,10 @@ function SKUForm(props) {
   let SKUOptions = [];
   let ComponentOptions = [];
 
+  SKUOptions.push(
+    <option value={-1}></option>
+  )
+
   try {
     props.SKUList?.data.forEach( SKU => {
       SKUOptions.push(
@@ -14,6 +18,10 @@ function SKUForm(props) {
   } catch {
     console.log("Error generating SKUOptions");
   }
+
+  ComponentOptions.push(
+    <option value={-1}></option>
+  )
 
   try {
     props.ComponentList?.data.forEach( Component => {
