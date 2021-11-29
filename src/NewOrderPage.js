@@ -6,7 +6,7 @@ import 'react-notifications/lib/notifications.css';
 
 
 export default class NewOrderPage extends React.Component {
-  // We can add error case if need to 
+  // We can add error case if need to
   createNotification = (handling) => {
     return () => {
       switch (handling) {
@@ -42,8 +42,8 @@ export default class NewOrderPage extends React.Component {
       <div>
         <div className="SKUForm">
           <button className="SKUButton" onClick={this.createNotification('success')}> Create Order </button>
-          <SKUForm 
-            SKUList={this.state.SKUs} 
+          <SKUForm
+            SKUList={this.state.SKUs}
             ComponentList={this.state.components}
             setSKU={(s) => this.updateSKU(s)}
             setComponent={(c) => this.updateComponent(c)}
@@ -76,7 +76,7 @@ export default class NewOrderPage extends React.Component {
     var _SKUs;
 
     fetch("/skus", {
-      headers : { 
+      headers : {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
        }
@@ -94,7 +94,7 @@ export default class NewOrderPage extends React.Component {
   fetchComponents(newSKU) {
     var _components;
 
-    fetch("/components?productID=" + newSKU, {
+    fetch("/product?productID=" + newSKU, {
       headers : {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
