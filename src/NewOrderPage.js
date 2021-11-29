@@ -94,7 +94,7 @@ export default class NewOrderPage extends React.Component {
   fetchComponents(newSKU) {
     var _components;
 
-    fetch("/components?productID=" + newSKU, {
+    fetch("/products?productID=" + newSKU, {
       headers : {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
