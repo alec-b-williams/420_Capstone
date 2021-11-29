@@ -55,11 +55,11 @@ export default class ViewOrderPage extends React.Component {
         'Accept': 'application/json'
        }
     })
-    /*.then(response => response.json())
+    .then(response => response.json())
     .then(_data => data = _data)
     .then(() => console.log(data))
-    .then(() => this.setState({orders: data}))*/
-    .then(response => console.log(response))
+    .then(() => this.setState({orders: data}))
+    //.then(response => console.log(response))
     .catch((error) => {
     console.error('Error:', error);
     });
