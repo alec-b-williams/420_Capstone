@@ -57,7 +57,6 @@ function SKUForm(props) {
                   </select>
                 </div>
               </form>
-              <button className="close-btn">x</button>
               {props.children}
           </div>
       </div>

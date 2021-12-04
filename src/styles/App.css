@@ -7,51 +7,14 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.ViewO {
+.navigationBar {
     background-color: rgb(56, 102, 255);
-    font-size: 1.2em;
+}
+
+.ViewOrders {
     font-weight: bold;
-    height: 50px;
-    width: 175px;
-    position: absolute;
-    left: 1%;
-    top: 2.5%;
-    border-radius: 15px;
-    color:white;
-    border: none;
-    outline: none;
 }
 
-.ViewO:hover {
-    background-color: rgb(0, 60, 255);
-}
-
-.NewO {
-    background-color: rgb(56, 102, 255);
-    font-size: 1.2em;
+.NewOrders {
     font-weight: bold;
-    height: 50px;
-    width: 175px;
-    position: absolute;
-    left: 1%;
-    top: 10%;
-    border-radius: 15px;
-    color:white;
-    border: none;
-    outline: none;
 }
-
-.NewO:hover {
-    background-color: rgb(0, 60, 255);
-}
-
-
-
-
-
-
-
-
-
-
-

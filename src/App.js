@@ -6,17 +6,21 @@ import React from 'react';
 import { Switch, Route } from 'navigo-react';
 import ViewOrderPage from './ViewOrderPage';
 import NewOrderPage from './NewOrderPage';
+import Container from 'react-bootstrap/Container';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Nav, } from 'react-bootstrap';
 
 export default class App extends React.Component {
-  // Remind to self: need a switch page for table.
-  // "Create Order" button needs to generate form when clicked on.
+
   render() {
-    return (
-      <>
-      <nav>
-        <button className='ViewO' href="/" data-navigo>View Orders</button>
-        <button className='NewO' href="/new" data-navigo>New Order</button>
-      </nav>
+    return (  
+  <div>
+  <Navbar className="navigationBar" fixed="top" expand="xl"  variant="dark">
+    <Container>
+    <Navbar.Brand>Team 8 - HP</Navbar.Brand>
+    <Nav className="me-auto">
+      <Nav.Link href="/" data-navigo className="ViewOrders">View Orders</Nav.Link>
+      <Nav.Link href="/new" data-navigo className="NewOrders">New Order</Nav.Link>
       <Switch>
         <Route path="/">
           <ViewOrderPage />
@@ -25,8 +29,10 @@ export default class App extends React.Component {
           <NewOrderPage />
         </Route>
       </Switch>
-      </>
+    </Nav>
+    </Container>
+  </Navbar>
+</div>
     );
   }
 }
-

@@ -1,18 +1,11 @@
 .pop-up {
     position: fixed;
-    top: 19px;
-    left: 500px;
-    width: 650px;
-    height: 700px;
+    top: 5em;
+    left: 35em;
+    width: 40em;
+    height: 25em;
     border-radius: 7.5px;
     border: 4px solid rgb(56, 102, 255);
-}
-
-.popup-inner {
-    position: absolute;
-    height: 692px;
-    border-radius: 3px;
-    background-color: white;
 }
 
 .userName {
@@ -49,7 +42,7 @@
 .compSelect {
     font-size: 1.2em;
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-left: 14.9px;
     margin-top: 30px;
 }
@@ -58,20 +51,3 @@
     width: 190px;
     outline: none;
 }
-
-.popup-inner .close-btn {
-    position: absolute;
-    font-size: 16px;
-    font-weight: bold;
-    top: 5px;
-    left: 607px;
-    width: 25px;
-    height: 25px;
-    border-radius: 50px;
-    border-color: black;
-}
-
-.close-btn:hover {
-    background-color: rgb(197, 197, 197);
-}
-
