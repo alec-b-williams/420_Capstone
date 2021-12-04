@@ -9,12 +9,27 @@
 
 .navigationBar {
     background-color: rgb(56, 102, 255);
+    font-weight: bold;
 }
 
 .ViewOrders {
     font-weight: bold;
 }
 
-.NewOrders {
+.ViewOrders:hover {
+    height: 2em;
+    border-bottom: 1px solid white;
+    border-width: 2px;
+    outline: none;
+}
+
+.NewOrders  {
     font-weight: bold;
+}
+
+.NewOrders:hover {
+    height: 2em;
+    border-bottom: 1px solid white;
+    border-width: 2px;
+    outline: none;
 }
