@@ -17,7 +17,7 @@ export default class App extends React.Component {
   <div>
   <Navbar className="navigationBar" fixed="top" expand="xl"  variant="dark">
     <Container>
-    <Navbar.Brand>Team 8 - HP</Navbar.Brand>
+    <Navbar.Brand className="Title">Team 8 - HP</Navbar.Brand>
     <Nav className="me-auto">
       <Nav.Link href="/" data-navigo className="ViewOrders">View Orders</Nav.Link>
       <Nav.Link href="/new" data-navigo className="NewOrders">New Order</Nav.Link>

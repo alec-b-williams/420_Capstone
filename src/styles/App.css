@@ -9,10 +9,15 @@
 
 .navigationBar {
     background-color: rgb(56, 102, 255);
+    height: 3.5em;
+}
+
+.Title {
     font-weight: bold;
 }
 
 .ViewOrders {
+    margin-left: 0.5em;
     font-weight: bold;
 }
 
@@ -24,6 +29,7 @@
 }
 
 .NewOrders  {
+    margin-left: 0.5em;
     font-weight: bold;
 }
 
