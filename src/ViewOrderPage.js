@@ -1,6 +1,7 @@
 import React from 'react';
 import CustomTableEntry from './CustomTable';
 import TableButton from "./TableButton.js";
+import "./styles/ViewWrapper.css"
 
 export default class ViewOrderPage extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ export default class ViewOrderPage extends React.Component {
     );
 
     return (
-      <div>
+      <div id="ViewWrapper">
         <div className="TableButton">
           <TableButton text="Get Orders" onClick={this.fetchOrders} />
         </div>
