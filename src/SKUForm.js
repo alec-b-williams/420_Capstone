@@ -44,6 +44,14 @@ function SKUForm(props) {
                   Name: 
                   <input type="text" id="NameField" placeholder="Enter your Name"></input>
                 </div>
+                <div className="address">
+                  Address:
+                  <input type="text" id="AddressField" placeholder="Enter your Address"></input>
+                </div>
+                <div className="fileLink">
+                  File URL:
+                  <input type="text" id="FileURL" placeholder="Enter File URL"></input>
+                </div>
                 <div className="skuSelect">
                   SKU: 
                   <select name="SKU" onChange={(o) => props.setSKU(o.target.value)} id="SKUCombo">
