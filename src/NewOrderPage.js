@@ -13,8 +13,14 @@ export default class NewOrderPage extends React.Component {
         case 'success':
           NotificationManager.success('200 OK', 'Order has sent');
           break;
+        case 'error':
+          NotificationManager.error('500 ERROR', 'Order failed');
+          break;
+        case 'warning':
+          NotificationManager.warning('Placeholder', 'Placeholder');
+          break;
         default:
-          return 'success'
+          return 'success';
       }
     };
   }
@@ -39,6 +45,7 @@ export default class NewOrderPage extends React.Component {
 
   render() {
     return(
+      
       <div>
         <div className="SKUForm">
           <button className="SKUButton" onClick={this.createNotification('success')}> Create Order </button>

@@ -36,11 +36,11 @@ function SKUForm(props) {
   
 
   return (props.trigger) ? (
-    <section>
       <div className="pop-up">
           <div className="popup-inner">
               <form id="sku-selection"> 
-              
+
+                <header className='title'> Shipping Info </header>
                 <div className="userName">
                   Name 
                   <input type="text" id="NameField" placeholder=""></input>
@@ -64,6 +64,11 @@ function SKUForm(props) {
                 <div className="postalCode">
                   Postal/Zip
                   <input type="text" id="postal" placeholder=""></input>
+                </div>
+
+                <div className="country">
+                  Country
+                  <select name="ISO"></select>
                 </div>
 
                 <div className="fileLink">
@@ -90,7 +95,6 @@ function SKUForm(props) {
           </div>
 
       </div>
-    </section>
   ) : "";
 }
 
