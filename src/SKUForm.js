@@ -1,9 +1,29 @@
 import React from 'react'
+import countries from 'countries-list'
 import './styles/SKUForm.css';
 
 function SKUForm(props) {
+  let CountryOptions = [];
   let SKUOptions = [];
   let ComponentOptions = [];
+
+  CountryOptions.push(
+    <option value={-1}></option>
+  )
+  CountryOptions.push(
+    <option value="US">United States</option>
+  )
+
+  try {
+      let countryNames = Object.keys(countries.countries)
+      countryNames.forEach (country => {
+        CountryOptions.push(
+          <option value={country}>{countries.countries[country].name}</option>
+        )
+    })
+  } catch {
+    console.log("error generating CountryOptions")
+  }
 
   SKUOptions.push(
     <option value={-1}></option>
@@ -34,7 +54,6 @@ function SKUForm(props) {
     console.log("Error generating ComponentOptions");
   }
   
-
   return (props.trigger) ? (
       <div className="pop-up">
           <div className="popup-inner">
@@ -68,7 +87,9 @@ function SKUForm(props) {
 
                 <div className="country">
                   Country
-                  <select name="ISO"></select>
+                  <select name="ISO" id="ISOCombo">
+                    {CountryOptions}
+                  </select>
                 </div>
 
                 <div className="fileLink">
