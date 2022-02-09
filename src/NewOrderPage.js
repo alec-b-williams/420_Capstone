@@ -7,23 +7,7 @@ import 'react-notifications/lib/notifications.css';
 
 export default class NewOrderPage extends React.Component {
   // We can add error case if need to
-  createNotification = (handling) => {
-    return () => {
-      switch (handling) {
-        case 'success':
-          NotificationManager.success('200 OK', 'Order has sent');
-          break;
-        case 'error':
-          NotificationManager.error('500 ERROR', 'Order failed');
-          break;
-        case 'warning':
-          NotificationManager.warning('Placeholder', 'Placeholder');
-          break;
-        default:
-          return 'success';
-      }
-    };
-  }
+  
 
   constructor(props) {
     super(props);
@@ -32,10 +16,19 @@ export default class NewOrderPage extends React.Component {
       selSKU: null,
       components: null,
       selComponent: null,
+      name: null,
+      address: null,
+      company: null, 
+      city: null,
+      zip: null,
+      country: null,
+      fileURL: null
     }
 
     this.fetchSKUs = this.fetchSKUs.bind(this);
     this.fetchComponents = this.fetchComponents.bind(this);
+    this.postOrder = this.postOrder.bind(this);
+    
   }
 
   componentDidMount() {
@@ -48,12 +41,19 @@ export default class NewOrderPage extends React.Component {
       
       <div>
         <div className="SKUForm">
-          <button className="SKUButton" onClick={this.createNotification('success')}> Create Order </button>
+          <button className="SKUButton" /*onClick={this.createNotification('success')}*/ onClick={this.postOrder}> Create Order </button>
           <SKUForm
             SKUList={this.state.SKUs}
             ComponentList={this.state.components}
             setSKU={(s) => this.updateSKU(s)}
             setComponent={(c) => this.updateComponent(c)}
+            setName={(v) => this.setState({name: v})}
+            setAddress={(v) => this.setState({address: v})}
+            setCompany={(v) => this.setState({company: v})}
+            setCity={(v) => this.setState({city: v})}
+            setZip={(v) => this.setState({zip: v})}
+            setCountry={(v) => this.setState({country: v})}
+            setURL={(v) => this.setState({fileURL: v})}
             trigger={true}>
           </SKUForm>
         </div>
@@ -114,5 +114,78 @@ export default class NewOrderPage extends React.Component {
     .catch((error) => {
       console.error('Error:', error);
     });
+  }
+
+  // Posting orders to the backend
+  postOrder() {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        "destination": {
+          "name": "wsu-test-team-8" // CHANGE LATER
+        },
+        "orderData": {
+          "customerName": this.state.name, // !!!!!!!!! GET ORDERER'S NAME !!!!!!!!!!
+          //"sourceOrderId": "ORDER_ID", // for mapping back to your order in your database
+          "items": [
+            {
+              "sku": this.state.selSKU, // from SiteFlow (ex. "HP-Orthotic-Left")
+              "sourceItemId": "Orthotic-Left-ORDER_ID",  // !!!!!!! ask about this  !!!!!!!
+              "components": [
+                {
+                  "fetch": true,
+                  "code": this.state.selComponent, // from SiteFlow (ex. "Orthotic-Component")
+                  "path": this.state.fileURL // TBC: should point to a file somewheres up in the clouds (see https://github.com/3MFConsortium/3mf-samples/tree/master/examples/beam%20lattice)
+                }
+              ]
+            }
+          ],
+          "shipments": [
+            {
+              "shipTo": {
+                "name": this.state.name,
+                "companyName": this.state.company,
+                "address1": this.state.address,
+                "town": this.state.city,
+                "postcode": this.state.zip,
+                "isoCountry": this.state.country
+              },
+             "carrier": {
+                "alias": "shipping"
+              }
+            }
+          ]
+        }
+      })
+    };
+
+    var postData;
+    fetch('/order', requestOptions)
+        
+        .then(response => postData = response.json())
+        .then(postData => console.log(postData))
+        //TODO: fix order confirmations
+        //.then(() => this.createNotification('success'))
+
+        //this.createNotification('success')
+  }
+
+  createNotification = (handling) => {
+    return () => {
+      switch (handling) {
+        case 'success':
+          NotificationManager.success('200 OK', 'Order has sent');
+          break;
+        case 'error':
+          NotificationManager.error('500 ERROR', 'Order failed');
+          break;
+        case 'warning':
+          NotificationManager.warning('Placeholder', 'Placeholder');
+          break;
+        default:
+          return 'success';
+      }
+    };
   }
 }

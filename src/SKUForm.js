@@ -62,39 +62,39 @@ function SKUForm(props) {
                 <header className='title'> Shipping Info </header>
                 <div className="userName">
                   Name 
-                  <input type="text" id="NameField" placeholder=""></input>
+                  <input type="text" id="NameField" placeholder="" onChange={(o) => props.setName(o.target.value)}></input>
                 </div>
 
                 <div className="address">
                   Address 
-                  <input type="text" id="AddressField" placeholder=""></input>
+                  <input type="text" id="AddressField" placeholder="" onChange={(o) => props.setAddress(o.target.value)}></input>
                 </div>
 
                 <div className="companyName">
                   Company
-                  <input type="text" id="Company" placeholder=""></input>
+                  <input type="text" id="Company" placeholder="" onChange={(o) => props.setCompany(o.target.value)}></input>
                 </div>
 
                 <div className="city">
                   City
-                  <input type="text" id="cityLoc" placeholder=""></input>
+                  <input type="text" id="cityLoc" placeholder="" onChange={(o) => props.setCity(o.target.value)}></input>
                 </div>
 
                 <div className="postalCode">
                   Postal/Zip
-                  <input type="text" id="postal" placeholder=""></input>
+                  <input type="text" id="postal" placeholder="" onChange={(o) => props.setZip(o.target.value)}></input>
                 </div>
 
                 <div className="country">
                   Country
-                  <select name="ISO" id="ISOCombo">
+                  <select name="ISO" id="ISOCombo" onChange={(o) => props.setCountry(o.target.value)}>
                     {CountryOptions}
                   </select>
                 </div>
 
                 <div className="fileLink">
                   File URL
-                  <input type="text" id="FileURL" placeholder=""></input>
+                  <input type="text" id="FileURL" placeholder="" onChange={(o) => props.setURL(o.target.value)}></input>
                 </div>
 
                 <div className="skuSelect">
