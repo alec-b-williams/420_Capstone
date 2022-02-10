@@ -126,23 +126,23 @@ export default class NewOrderPage extends React.Component {
           "name": "wsu-test-team-8" // CHANGE LATER
         },
         "orderData": {
-          "customerName": this.state.name, // !!!!!!!!! GET ORDERER'S NAME !!!!!!!!!!
+          "customerName": "wsu-test-team-8" , 
           //"sourceOrderId": "ORDER_ID", // for mapping back to your order in your database
-          "items": [
-            {
-              "sku": this.state.selSKU, // from SiteFlow (ex. "HP-Orthotic-Left")
-              "sourceItemId": "Orthotic-Left-ORDER_ID",  // !!!!!!! ask about this  !!!!!!!
-              "components": [
-                {
-                  "fetch": true,
-                  "code": this.state.selComponent, // from SiteFlow (ex. "Orthotic-Component")
-                  "path": this.state.fileURL // TBC: should point to a file somewheres up in the clouds (see https://github.com/3MFConsortium/3mf-samples/tree/master/examples/beam%20lattice)
-                }
-              ]
-            }
-          ],
           "shipments": [
             {
+              "items": [
+                {
+                  "sku": this.state.selSKU, // from SiteFlow (ex. "HP-Orthotic-Left")
+                  "sourceItemId": "Orthotic-Left-ORDER_ID",  // !!!!!!! ask about this  !!!!!!!
+                  "components": [
+                    {
+                      "fetch": true,
+                      "code": this.state.selComponent, // from SiteFlow (ex. "Orthotic-Component")
+                      "path": this.state.fileURL // TBC: should point to a file somewheres up in the clouds (see https://github.com/3MFConsortium/3mf-samples/tree/master/examples/beam%20lattice)
+                    }
+                  ]
+                }
+              ],
               "shipTo": {
                 "name": this.state.name,
                 "companyName": this.state.company,
