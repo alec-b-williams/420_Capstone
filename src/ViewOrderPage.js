@@ -36,7 +36,7 @@ export default class ViewOrderPage extends React.Component {
 
     return (
       <div id="ViewWrapper">
-        <div className="TableButton">
+        <div data-testid = "tablebutton" className="TableButton">
           <TableButton text="Get Orders" onClick={this.fetchOrders} />
         </div>
 

@@ -40,7 +40,7 @@ export default class NewOrderPage extends React.Component {
     return(
       
       <div>
-        <div className="SKUForm">
+        <div data-testid = "SKU" className="SKUForm">
           <button className="SKUButton" /*onClick={this.createNotification('success')}*/ onClick={this.postOrder}> Create Order </button>
           <SKUForm
             SKUList={this.state.SKUs}
