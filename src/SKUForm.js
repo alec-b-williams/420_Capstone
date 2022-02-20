@@ -32,7 +32,7 @@ function SKUForm(props) {
   try {
     props.SKUList?.data.forEach( SKU => {
       SKUOptions.push(
-        <option value={SKU.productId}>{SKU.description}</option>
+        <option value={SKU.code}>{SKU.description}</option>
       );
     });
   } catch {
