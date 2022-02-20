@@ -7,7 +7,7 @@ import 'react-notifications/lib/notifications.css';
 
 export default class NewOrderPage extends React.Component {
   // We can add error case if need to
-  
+
 
   constructor(props) {
     super(props);
@@ -18,7 +18,7 @@ export default class NewOrderPage extends React.Component {
       selComponent: null,
       name: null,
       address: null,
-      company: null, 
+      company: null,
       city: null,
       zip: null,
       country: null,
@@ -28,7 +28,7 @@ export default class NewOrderPage extends React.Component {
     this.fetchSKUs = this.fetchSKUs.bind(this);
     this.fetchComponents = this.fetchComponents.bind(this);
     this.postOrder = this.postOrder.bind(this);
-    
+
   }
 
   componentDidMount() {
@@ -38,7 +38,7 @@ export default class NewOrderPage extends React.Component {
 
   render() {
     return(
-      
+
       <div>
         <div data-testid = "SKU" className="SKUForm">
           <button className="SKUButton" /*onClick={this.createNotification('error')}*/ onClick={this.postOrder}> Create Order </button>
@@ -119,19 +119,19 @@ export default class NewOrderPage extends React.Component {
   // Posting orders to the backend
   postOrder() {
     let sku = this.state.SKUs.data.find(item => {
-      return item.code == this.state.selSKU
+      return item.code === this.state.selSKU
     })
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json',
                  "Access-Control-Allow-Origin": "*", },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         "destination": {
           "name": "wsu-test-team-8",
           "status": "live",
         },
         "orderData": {
-          "customerName": "wsu-test-team-8" , 
+          "customerName": "wsu-test-team-8" ,
           "items": [{
             "attributes": [],
             "reprintCount": 0,
@@ -139,13 +139,14 @@ export default class NewOrderPage extends React.Component {
             "shipmentIndex": 0,
             "status": "live",
             "scanned": 0,
-            
-            "sku": sku.productId, //enter SKU number, // from SiteFlow (ex. "HP-Orthotic-Left")
+
+            "sku": "HP-Orthotic-Right", //enter SKU number, // from SiteFlow (ex. "HP-Orthotic-Left")
             "sourceItemId": this.state.selSKU,  // !!!!!!! ask about this  !!!!!!!
+              "productId": sku.productId,
             "components": [
               {
                 "fetch": false,
-                "code": this.state.selComponent, // from SiteFlow (ex. "Orthotic-Component")
+                "code": "Orthotic-Component", // from SiteFlow (ex. "Orthotic-Component")
                 "path": this.state.fileURL // TBC: should point to a file somewheres up in the clouds (see https://github.com/3MFConsortium/3mf-samples/tree/master/examples/beam%20lattice)
               }
             ]
@@ -159,7 +160,7 @@ export default class NewOrderPage extends React.Component {
                 "shipmentIndex": 0,
                 "status": "live",
                 "scanned": 0,
-                
+
                 "sku": sku.productId, //enter SKU number, // from SiteFlow (ex. "HP-Orthotic-Left")
                 "sourceItemId": this.state.selSKU,  // !!!!!!! ask about this  !!!!!!!
                 "components": [
@@ -191,7 +192,7 @@ export default class NewOrderPage extends React.Component {
     console.log(requestOptions.body)
     var postData;
     fetch('/order', requestOptions)
-        
+
         .then(response => postData = response)
         //.then(response => console.log(response))
         //.then(postData => console.log(postData))
@@ -209,7 +210,7 @@ export default class NewOrderPage extends React.Component {
         case '200':
           NotificationManager.success('200 OK', 'Order has sent');
           break;
-        case 400: 
+        case 400:
           console.log("creating notif")
           NotificationManager.error('400 ERROR', 'Order failed');
           break;
