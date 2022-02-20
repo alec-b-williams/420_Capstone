@@ -118,6 +118,9 @@ export default class NewOrderPage extends React.Component {
 
   // Posting orders to the backend
   postOrder() {
+    let sku = this.state.SKUs.data.find(item => {
+      return item.code = this.state.selSKU
+    })
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json',
@@ -127,14 +130,13 @@ export default class NewOrderPage extends React.Component {
           "name": "wsu-test-team-8" // CHANGE LATER
         },
         "orderData": {
-          "status": "pending",
           "customerName": "wsu-test-team-8" , 
           //"sourceOrderId": "ORDER_ID", // for mapping back to your order in your database
           "items": [],
           "shipments": [
             {
               "items" : [{
-                "sku": "615dc81f41a19d71f909b0d5", //enter SKU number, // from SiteFlow (ex. "HP-Orthotic-Left")
+                "sku": sku.productId, //enter SKU number, // from SiteFlow (ex. "HP-Orthotic-Left")
                 "sourceItemId": this.state.selSKU,  // !!!!!!! ask about this  !!!!!!!
                 "components": [
                   {
