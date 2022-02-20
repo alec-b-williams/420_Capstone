@@ -119,7 +119,7 @@ export default class NewOrderPage extends React.Component {
   // Posting orders to the backend
   postOrder() {
     let sku = this.state.SKUs.data.find(item => {
-      return item.code = this.state.selSKU
+      return item.code == this.state.selSKU
     })
     const requestOptions = {
       method: 'POST',
@@ -127,15 +127,39 @@ export default class NewOrderPage extends React.Component {
                  "Access-Control-Allow-Origin": "*", },
       body: JSON.stringify({ 
         "destination": {
-          "name": "wsu-test-team-8" // CHANGE LATER
+          "name": "wsu-test-team-8",
+          "status": "live",
         },
         "orderData": {
           "customerName": "wsu-test-team-8" , 
-          //"sourceOrderId": "ORDER_ID", // for mapping back to your order in your database
-          "items": [],
+          "items": [{
+            "attributes": [],
+            "reprintCount": 0,
+            "quantity": 1,
+            "shipmentIndex": 0,
+            "status": "live",
+            "scanned": 0,
+            
+            "sku": sku.productId, //enter SKU number, // from SiteFlow (ex. "HP-Orthotic-Left")
+            "sourceItemId": this.state.selSKU,  // !!!!!!! ask about this  !!!!!!!
+            "components": [
+              {
+                "fetch": false,
+                "code": this.state.selComponent, // from SiteFlow (ex. "Orthotic-Component")
+                "path": this.state.fileURL // TBC: should point to a file somewheres up in the clouds (see https://github.com/3MFConsortium/3mf-samples/tree/master/examples/beam%20lattice)
+              }
+            ]
+          }],
           "shipments": [
             {
               "items" : [{
+                "attributes": [],
+                "reprintCount": 0,
+                "quantity": 1,
+                "shipmentIndex": 0,
+                "status": "live",
+                "scanned": 0,
+                
                 "sku": sku.productId, //enter SKU number, // from SiteFlow (ex. "HP-Orthotic-Left")
                 "sourceItemId": this.state.selSKU,  // !!!!!!! ask about this  !!!!!!!
                 "components": [
@@ -164,17 +188,17 @@ export default class NewOrderPage extends React.Component {
       })
     };
 
-    //console.log(requestOptions.body)
-    //var postData;
+    console.log(requestOptions.body)
+    var postData;
     fetch('/order', requestOptions)
         
-        //.then(response => postData = response)
+        .then(response => postData = response)
         //.then(response => console.log(response))
         //.then(postData => console.log(postData))
         //TODO: fix order confirmations
-        .then(response => this.createNotification(response.status))
+        //.then(response => this.createNotification(response.status))
 
-        //this.createNotification(postData.status)
+    //this.createNotification(postData.status)
   }
 
   createNotification = (handling) => {
