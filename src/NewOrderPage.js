@@ -41,7 +41,7 @@ export default class NewOrderPage extends React.Component {
       
       <div>
         <div data-testid = "SKU" className="SKUForm">
-          <button className="SKUButton" /*onClick={this.createNotification('success')}*/ onClick={this.postOrder}> Create Order </button>
+          <button className="SKUButton" /*onClick={this.createNotification('error')}*/ onClick={this.postOrder}> Create Order </button>
           <SKUForm
             SKUList={this.state.SKUs}
             ComponentList={this.state.components}
@@ -120,29 +120,30 @@ export default class NewOrderPage extends React.Component {
   postOrder() {
     const requestOptions = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json',
+                 "Access-Control-Allow-Origin": "*", },
       body: JSON.stringify({ 
         "destination": {
           "name": "wsu-test-team-8" // CHANGE LATER
         },
         "orderData": {
+          "status": "pending",
           "customerName": "wsu-test-team-8" , 
           //"sourceOrderId": "ORDER_ID", // for mapping back to your order in your database
+          "items": [],
           "shipments": [
             {
-              "items": [
-                {
-                  "sku": this.state.selSKU, // from SiteFlow (ex. "HP-Orthotic-Left")
-                  "sourceItemId": "Orthotic-Left-ORDER_ID",  // !!!!!!! ask about this  !!!!!!!
-                  "components": [
-                    {
-                      "fetch": true,
-                      "code": this.state.selComponent, // from SiteFlow (ex. "Orthotic-Component")
-                      "path": this.state.fileURL // TBC: should point to a file somewheres up in the clouds (see https://github.com/3MFConsortium/3mf-samples/tree/master/examples/beam%20lattice)
-                    }
-                  ]
-                }
-              ],
+              "items" : [{
+                "sku": "615dc81f41a19d71f909b0d5", //enter SKU number, // from SiteFlow (ex. "HP-Orthotic-Left")
+                "sourceItemId": this.state.selSKU,  // !!!!!!! ask about this  !!!!!!!
+                "components": [
+                  {
+                    "fetch": false,
+                    "code": this.state.selComponent, // from SiteFlow (ex. "Orthotic-Component")
+                    "path": this.state.fileURL // TBC: should point to a file somewheres up in the clouds (see https://github.com/3MFConsortium/3mf-samples/tree/master/examples/beam%20lattice)
+                  }
+                ]
+              }],
               "shipTo": {
                 "name": this.state.name,
                 "companyName": this.state.company,
@@ -152,7 +153,8 @@ export default class NewOrderPage extends React.Component {
                 "isoCountry": this.state.country
               },
              "carrier": {
-                "alias": "shipping"
+                "code": "customer",
+                "service": "shipping"
               }
             }
           ]
@@ -160,24 +162,32 @@ export default class NewOrderPage extends React.Component {
       })
     };
 
-    var postData;
+    //console.log(requestOptions.body)
+    //var postData;
     fetch('/order', requestOptions)
         
-        .then(response => postData = response.json())
-        .then(postData => console.log(postData))
+        //.then(response => postData = response)
+        //.then(response => console.log(response))
+        //.then(postData => console.log(postData))
         //TODO: fix order confirmations
-        //.then(() => this.createNotification('success'))
+        .then(response => this.createNotification(response.status))
 
-        //this.createNotification('success')
+        //this.createNotification(postData.status)
   }
 
   createNotification = (handling) => {
+    console.log("createNotif called, status: " + handling)
+    console.log(handling == 400)
     return () => {
       switch (handling) {
-        case 'success':
+        case '200':
           NotificationManager.success('200 OK', 'Order has sent');
           break;
-        case 'error':
+        case 400: 
+          console.log("creating notif")
+          NotificationManager.error('400 ERROR', 'Order failed');
+          break;
+        case '500':
           NotificationManager.error('500 ERROR', 'Order failed');
           break;
         case 'warning':
