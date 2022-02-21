@@ -62,27 +62,27 @@ function SKUForm(props) {
                 <header className='title'> Shipping Info </header>
                 <div className="userName">
                   Name 
-                  <input type="text" id="NameField" placeholder="" onChange={(o) => props.setName(o.target.value)}></input>
+                  <input type="text" onKeyPress={(event) => { if(!/[a-zA-Z]/.test(event.key)) { event.preventDefault(); }}} maxLength="20" id="NameField" placeholder="" onChange={(o) => props.setName(o.target.value)}></input>
                 </div>
 
                 <div className="address">
                   Address 
-                  <input type="text" id="AddressField" placeholder="" onChange={(o) => props.setAddress(o.target.value)}></input>
+                  <input type="text" id="AddressField" maxLength="20" placeholder="" onChange={(o) => props.setAddress(o.target.value)}></input>
                 </div>
 
                 <div className="companyName">
                   Company
-                  <input type="text" id="Company" placeholder="" onChange={(o) => props.setCompany(o.target.value)}></input>
+                  <input type="text" id="Company" maxLength="20" placeholder="" onChange={(o) => props.setCompany(o.target.value)}></input>
                 </div>
 
                 <div className="city">
                   City
-                  <input type="text" id="cityLoc" placeholder="" onChange={(o) => props.setCity(o.target.value)}></input>
+                  <input type="text" onKeyPress={(event) => { if(!/[a-zA-Z]/.test(event.key)) { event.preventDefault(); }}} maxLength="20" id="cityLoc" placeholder="" onChange={(o) => props.setCity(o.target.value)}></input>
                 </div>
 
                 <div className="postalCode">
                   Postal/Zip
-                  <input type="text" onKeyPress={(event) => { if(!/[0-9]/.test(event.key)) { event.preventDefault(); }}} id="postal" placeholder="" onChange={(o) => props.setZip(o.target.value)}></input>
+                  <input type="text" onKeyPress={(event) => { if(!/[0-9]/.test(event.key)) { event.preventDefault(); }}} maxLength="10" id="postal" placeholder="" onChange={(o) => props.setZip(o.target.value)}></input>
                 </div>
 
                 <div className="country">
