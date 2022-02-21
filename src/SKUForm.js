@@ -82,7 +82,7 @@ function SKUForm(props) {
 
                 <div className="postalCode">
                   Postal/Zip
-                  <input type="text" id="postal" placeholder="" onChange={(o) => props.setZip(o.target.value)}></input>
+                  <input type="text" onKeyPress={(event) => { if(!/[0-9]/.test(event.key)) { event.preventDefault(); }}} id="postal" placeholder="" onChange={(o) => props.setZip(o.target.value)}></input>
                 </div>
 
                 <div className="country">
