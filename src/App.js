@@ -6,9 +6,9 @@ import React from 'react';
 import { Switch, Route } from 'navigo-react';
 import ViewOrderPage from './ViewOrderPage';
 import NewOrderPage from './NewOrderPage';
-import Container from 'react-bootstrap/Container';
+//import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 export default class App extends React.Component {
 
