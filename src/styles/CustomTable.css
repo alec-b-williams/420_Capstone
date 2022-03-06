@@ -23,21 +23,9 @@
 }
 
 /* Min-height will change the spacing inside the box from the word */
-.orderCustName {
+.orderItem, .orderDate, .orderStatus {
     min-height: 5px;
     border-radius: 50px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.orderDate {
-    min-height: 5px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.orderStatus {
-    min-height: 5px;
     font-size: 24px;
     font-weight: bold;
 }

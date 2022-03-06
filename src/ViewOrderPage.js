@@ -8,31 +8,66 @@ export default class ViewOrderPage extends React.Component {
     super(props);
     this.state = {
       orders: null,
+      index: 0,
+      count: 10,
     }
 
     this.fetchOrders = this.fetchOrders.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchOrders();
+  }
+
   render() {
 
+    let header = (<CustomTableEntry
+      //name={"Name"}
+      date={"Date"}
+      item={"Item"}
+      status={"Status"}/>)
     let tableEntries = [];
-    
-    tableEntries.push(<CustomTableEntry
-    name={"Name"}
-    date={"Date"}
-    status={"Status"}/>)
 
     //do a for-loop here to generate a list of CustomTableEntries
     //for (var i=0; i < this.state.orders.data.length; i++) {
     this.state.orders?.data.forEach( order => {
       console.log(order._id)
+      let date = new Date(order.orderData.date);
+      let dateString = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
+
+      var status = "Other"; 
+    
+      switch(order.orderData.status) {
+        case ('error'):
+          status = "Error";
+          break;
+        case ('complete'):
+          status = "Complete";
+          break;
+        case ('printready'):
+          status = "Print Ready";
+          break;
+        case ('pending'):
+          status = "Pending";
+          break;
+        case ('shipped'):
+          status = "Shipped";
+          break;
+        case ('cancelled'):
+          status = "Cancelled";
+          break;
+      }
+
       tableEntries.push(<CustomTableEntry 
         key={order._id}
-        name={order.orderData.customerName}
-        date={order.orderData.date} 
-        status={order.orderData.status}/>)
+        //name={order.orderData.customerName}
+        date={dateString} 
+        item={order._id}
+        status={status}/>)
       }
     );
+
+
 
     return (
       <div id="ViewWrapper">
@@ -41,7 +76,8 @@ export default class ViewOrderPage extends React.Component {
         </div>
 
         <div className="CustomTable">
-          {tableEntries} 
+          {header}
+          {tableEntries.slice(this.state.index, this.state.index + this.state.count)} 
         </div>
       </div>
     );
