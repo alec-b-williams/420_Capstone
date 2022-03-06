@@ -10,9 +10,12 @@ export default class ViewOrderPage extends React.Component {
       orders: null,
       index: 0,
       count: 10,
+      searchVal: null,
     }
 
     this.fetchOrders = this.fetchOrders.bind(this);
+    this.setIndex = this.setIndex.bind(this);
+    this.getIndex = this.getIndex.bind(this);
   }
 
   componentDidMount() {
@@ -31,7 +34,7 @@ export default class ViewOrderPage extends React.Component {
     //do a for-loop here to generate a list of CustomTableEntries
     //for (var i=0; i < this.state.orders.data.length; i++) {
     this.state.orders?.data.forEach( order => {
-      console.log(order._id)
+      //console.log(order._id)
       let date = new Date(order.orderData.date);
       let dateString = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
 
@@ -60,24 +63,53 @@ export default class ViewOrderPage extends React.Component {
 
       tableEntries.push(<CustomTableEntry 
         key={order._id}
-        //name={order.orderData.customerName}
         date={dateString} 
         item={order._id}
         status={status}/>)
       }
     );
 
-
+    let start = (this.state.index * this.state.count) + 1
+    let end = ((this.state.index * this.state.count) + this.state.count) + 1
 
     return (
       <div id="ViewWrapper">
-        <div data-testid = "tablebutton" className="TableButton">
-          <TableButton text="Get Orders" onClick={this.fetchOrders} />
-        </div>
-
         <div className="CustomTable">
           {header}
-          {tableEntries.slice(this.state.index, this.state.index + this.state.count)} 
+          {tableEntries.slice(this.state.index * this.state.count, 
+            (this.state.index * this.state.count) + this.state.count)} 
+        </div>
+
+        <div className="PageControls">
+          Displaying entries {start} - {end} {'\u00A0'}
+
+          <button onClick={() => this.setState({index: 0})}>{"First"}</button>
+
+          <button onClick={() => {
+            if (this.state.index > 0)
+              this.setState({index: this.state.index - 1})
+          }}>{"Prev"}</button>
+
+          {this.state.index + 1}
+
+          <button onClick={() => {
+            if (this.state.index < ~~(tableEntries.length / this.state.count))
+              this.setState({index: this.state.index + 1})
+          }}>{"Next"}</button>
+
+          <button onClick={() => this.setState({index: ~~(tableEntries.length / this.state.count)})}>{"Last"}</button>
+
+          Entries per page: {'\u00A0'}
+
+          <select id="rowCountSelect" onChange={(v) => {
+              console.log("updating count: " + v.target.value)
+              this.setState({count: parseInt(v.target.value)})
+            }}>
+            <option value={10}>10</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+          </select>
         </div>
       </div>
     );
@@ -100,6 +132,21 @@ export default class ViewOrderPage extends React.Component {
     .catch((error) => {
     console.error('Error:', error);
     });
+  }
+
+  getIndex() {
+    return this.state.index;
+  }
+
+  async setIndex(newIndex) {
+    console.log("Calling setIndex " + newIndex)
+
+    if (newIndex < 0)
+      newIndex = 0;
+    if (newIndex > (this.state.index / this.state.count))
+      newIndex = (this.state.index / this.state.count)
+    
+    await this.setState({index: newIndex})
   }
 }
 
