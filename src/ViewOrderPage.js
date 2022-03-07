@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import CustomTableEntry from './CustomTable';
 import TableButton from "./TableButton.js";
 import "./styles/ViewWrapper.css"
+import orderBy from 'lodash/orderBy';
+
+const invertDirect = {
+  asc: 'desc',
+  desc: 'asc'
+}
 
 export default class ViewOrderPage extends React.Component {
   constructor(props) {
@@ -14,6 +20,8 @@ export default class ViewOrderPage extends React.Component {
       dateSort: 0,
       itemSort: 0,
       statusSort: 0,
+      columnToSort: '',
+      sortDirection:'desc',
     }
 
     this.fetchOrders = this.fetchOrders.bind(this);
@@ -27,9 +35,9 @@ export default class ViewOrderPage extends React.Component {
 
     let header = (
       <div className='tableEntry' >
-        <button className='holder orderDate'> Date </button>
-        <button className='holder orderItem'> Item </button>
-        <button className='holder orderStatus'> Status </button>
+        <button className='holder orderDate' onClick={() => handleSort('Date')}>Date</button>
+        <button className='holder orderItem'>Item</button>
+        <button className='holder orderStatus'>Status</button>
       </div>
     )
     let tableEntries = [];
@@ -74,12 +82,14 @@ export default class ViewOrderPage extends React.Component {
         }
     );
 
+    order=orderBy(this.state.order, this.state.columnToSort, this.columnToSort.sortDirection);
+
     let start = (this.state.index * this.state.count) + 1
     let end = ((this.state.index * this.state.count) + this.state.count) + 1
 
     return (
       <div id="ViewWrapper">
-        <div className="SearchBar">
+        <div>
           Search Items: {'\u00A0'}
           <input id="searchField" onChange={(v) => this.setState({searchVal: v.target.value}, ()=>console.log(this.state.searchVal))}></input>
         </div>
@@ -144,6 +154,12 @@ export default class ViewOrderPage extends React.Component {
     });
   }
 
+  handleSort = (columnName) => {
+    this.setState(state =>({
+      columnToSort: columnName,
+      sortDirection: state.columnToSort === columnName ? invertDirect[state.sortDirection] : 'asc'
+    }));
+  }
 
 }
 
