@@ -23,25 +23,25 @@
 }
 
 /* Min-height will change the spacing inside the box from the word */
-.orderCustName {
+.orderItem, .orderDate, .orderStatus {
     min-height: 5px;
     border-radius: 50px;
     font-size: 24px;
     font-weight: bold;
 }
 
-.orderDate {
-    min-height: 5px;
-    font-size: 24px;
-    font-weight: bold;
+div.PageControls button {
+  margin: 10px;
+  padding: 2px 10px;
+  font-weight: bold;
 }
 
-.orderStatus {
-    min-height: 5px;
-    font-size: 24px;
-    font-weight: bold;
+div.PageControls {
+  font-weight: bold;
 }
 
-
-
-
+#ViewWrapper input {
+  margin: 10px;
+  width: auto;
+  padding: 3px;
+}
