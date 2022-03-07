@@ -39,3 +39,9 @@ div.PageControls button {
 div.PageControls {
   font-weight: bold;
 }
+
+#ViewWrapper input {
+  margin: 10px;
+  width: auto;
+  padding: 3px;
+}

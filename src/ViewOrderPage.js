@@ -10,12 +10,13 @@ export default class ViewOrderPage extends React.Component {
       orders: null,
       index: 0,
       count: 10,
-      searchVal: null,
+      searchVal: "",
+      dateSort: 0,
+      itemSort: 0,
+      statusSort: 0,
     }
 
     this.fetchOrders = this.fetchOrders.bind(this);
-    this.setIndex = this.setIndex.bind(this);
-    this.getIndex = this.getIndex.bind(this);
   }
 
   componentDidMount() {
@@ -24,11 +25,13 @@ export default class ViewOrderPage extends React.Component {
 
   render() {
 
-    let header = (<CustomTableEntry
-      //name={"Name"}
-      date={"Date"}
-      item={"Item"}
-      status={"Status"}/>)
+    let header = (
+      <div className='tableEntry' >
+        <button className='holder orderDate'>Date</button>
+        <button className='holder orderItem'>Item</button>
+        <button className='holder orderStatus'>Status</button>
+      </div>
+    )
     let tableEntries = [];
 
     //do a for-loop here to generate a list of CustomTableEntries
@@ -61,12 +64,14 @@ export default class ViewOrderPage extends React.Component {
           break;
       }
 
-      tableEntries.push(<CustomTableEntry 
-        key={order._id}
-        date={dateString} 
-        item={order._id}
-        status={status}/>)
-      }
+      //TODO: update search later when changing item from order._id to SKU name\
+      if (this.state.searchVal == "" || order._id.includes(this.state.searchVal))
+        tableEntries.push(<CustomTableEntry 
+          key={order._id}
+          date={dateString} 
+          item={order._id}
+          status={status}/>)
+        }
     );
 
     let start = (this.state.index * this.state.count) + 1
@@ -74,6 +79,11 @@ export default class ViewOrderPage extends React.Component {
 
     return (
       <div id="ViewWrapper">
+        <div>
+          Search Items: {'\u00A0'}
+          <input id="searchField" onChange={(v) => this.setState({searchVal: v.target.value}, ()=>console.log(this.state.searchVal))}></input>
+        </div>
+
         <div className="CustomTable">
           {header}
           {tableEntries.slice(this.state.index * this.state.count, 
@@ -134,19 +144,6 @@ export default class ViewOrderPage extends React.Component {
     });
   }
 
-  getIndex() {
-    return this.state.index;
-  }
 
-  async setIndex(newIndex) {
-    console.log("Calling setIndex " + newIndex)
-
-    if (newIndex < 0)
-      newIndex = 0;
-    if (newIndex > (this.state.index / this.state.count))
-      newIndex = (this.state.index / this.state.count)
-    
-    await this.setState({index: newIndex})
-  }
 }
 
