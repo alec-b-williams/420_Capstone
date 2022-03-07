@@ -27,9 +27,9 @@ export default class ViewOrderPage extends React.Component {
 
     let header = (
       <div className='tableEntry' >
-        <button className='holder orderDate'>Date</button>
-        <button className='holder orderItem'>Item</button>
-        <button className='holder orderStatus'>Status</button>
+        <button className='holder orderDate'> Date </button>
+        <button className='holder orderItem'> Item </button>
+        <button className='holder orderStatus'> Status </button>
       </div>
     )
     let tableEntries = [];
@@ -79,7 +79,7 @@ export default class ViewOrderPage extends React.Component {
 
     return (
       <div id="ViewWrapper">
-        <div>
+        <div className="SearchBar">
           Search Items: {'\u00A0'}
           <input id="searchField" onChange={(v) => this.setState({searchVal: v.target.value}, ()=>console.log(this.state.searchVal))}></input>
         </div>
