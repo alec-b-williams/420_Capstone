@@ -3,6 +3,7 @@ import CustomTableEntry from './CustomTable';
 import TableButton from "./TableButton.js";
 import "./styles/ViewWrapper.css"
 import orderBy from 'lodash/orderBy';
+var _ = require('lodash');
 
 const invertDirect = {
   asc: 'desc',
@@ -21,10 +22,11 @@ export default class ViewOrderPage extends React.Component {
       itemSort: 0,
       statusSort: 0,
       columnToSort: '',
-      sortDirection:'desc',
+      sortDirection: 'desc',
     }
 
     this.fetchOrders = this.fetchOrders.bind(this);
+    this.handleSort = this.handleSort.bind(this);
   }
 
   componentDidMount() {
@@ -32,58 +34,58 @@ export default class ViewOrderPage extends React.Component {
   }
 
   render() {
-
     let header = (
       <div className='tableEntry' >
-        <button className='holder orderDate' onClick={() => handleSort('Date')}>Date</button>
-        <button className='holder orderItem'>Item</button>
-        <button className='holder orderStatus'>Status</button>
+        <button className='holder orderDate' onClick={() => this.handleSort('orderData.date')}>Date</button>
+        <button className='holder orderItem' onClick={() => this.handleSort('_id')}>Item</button>
+        <button className='holder orderStatus' onClick={() => this.handleSort('orderData.status')}>Status</button>
       </div>
     )
+
     let tableEntries = [];
+    let orders =  this.state.orders
 
-    //do a for-loop here to generate a list of CustomTableEntries
-    //for (var i=0; i < this.state.orders.data.length; i++) {
-    this.state.orders?.data.forEach( order => {
-      //console.log(order._id)
-      let date = new Date(order.orderData.date);
-      let dateString = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
+    if (orders != null) {
+      orders.data = _.orderBy(this.state.orders.data, this.state.columnToSort, this.state.sortDirection)
 
-      var status = "Other"; 
-    
-      switch(order.orderData.status) {
-        case ('error'):
-          status = "Error";
-          break;
-        case ('complete'):
-          status = "Complete";
-          break;
-        case ('printready'):
-          status = "Print Ready";
-          break;
-        case ('pending'):
-          status = "Pending";
-          break;
-        case ('shipped'):
-          status = "Shipped";
-          break;
-        case ('cancelled'):
-          status = "Cancelled";
-          break;
-      }
+      orders?.data.forEach( order => {
+        let date = new Date(order.orderData.date);
+        let dateString = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
 
-      //TODO: update search later when changing item from order._id to SKU name\
-      if (this.state.searchVal == "" || order._id.includes(this.state.searchVal))
-        tableEntries.push(<CustomTableEntry 
-          key={order._id}
-          date={dateString} 
-          item={order._id}
-          status={status}/>)
+        var status = "Other"; 
+      
+        switch(order.orderData.status) {
+          case ('error'):
+            status = "Error";
+            break;
+          case ('complete'):
+            status = "Complete";
+            break;
+          case ('printready'):
+            status = "Print Ready";
+            break;
+          case ('pending'):
+            status = "Pending";
+            break;
+          case ('shipped'):
+            status = "Shipped";
+            break;
+          case ('cancelled'):
+            status = "Cancelled";
+            break;
         }
-    );
 
-    order=orderBy(this.state.order, this.state.columnToSort, this.columnToSort.sortDirection);
-
+        //TODO: update search later when changing item from order._id to SKU name\
+        if (this.state.searchVal == "" || order._id.includes(this.state.searchVal))
+          tableEntries.push(<CustomTableEntry 
+            key={order._id}
+            date={dateString} 
+            item={order._id}
+            status={status}/>)
+          }
+      );
+    }
+    
     let start = (this.state.index * this.state.count) + 1
     let end = ((this.state.index * this.state.count) + this.state.count) + 1
 
@@ -123,7 +125,10 @@ export default class ViewOrderPage extends React.Component {
 
           <select id="rowCountSelect" onChange={(v) => {
               console.log("updating count: " + v.target.value)
-              this.setState({count: parseInt(v.target.value)})
+              this.setState({
+                count: parseInt(v.target.value), 
+                index: 0,
+              })
             }}>
             <option value={10}>10</option>
             <option value={25}>25</option>
@@ -148,18 +153,17 @@ export default class ViewOrderPage extends React.Component {
     .then(_data => data = _data)
     .then(() => console.log(data))
     .then(() => this.setState({orders: data}))
-    //.then(response => console.log(response))
     .catch((error) => {
     console.error('Error:', error);
     });
   }
 
-  handleSort = (columnName) => {
-    this.setState(state =>({
+  handleSort(columnName) { 
+    this.setState({
       columnToSort: columnName,
-      sortDirection: state.columnToSort === columnName ? invertDirect[state.sortDirection] : 'asc'
-    }));
+      sortDirection: this.state.columnToSort === columnName ? invertDirect[this.state.sortDirection] : 'asc',
+    }, () => {
+      console.log("column name: " + this.state.columnToSort + ", dir: " + this.state.sortDirection);
+    });
   }
-
 }
-
