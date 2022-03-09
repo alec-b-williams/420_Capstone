@@ -36,9 +36,9 @@ export default class ViewOrderPage extends React.Component {
   render() {
     let header = (
       <div className='tableEntry' >
-        <button className='holder orderDate' onClick={() => this.handleSort('orderData.date')}>Date</button>
-        <button className='holder orderItem' onClick={() => this.handleSort('_id')}>Item</button>
-        <button className='holder orderStatus' onClick={() => this.handleSort('orderData.status')}>Status</button>
+        <button className='holder orderAddress' onClick={() => this.handleSort('order.orderData.shipments[0].shipTo.address1')}>Address</button>
+        <button className='holder orderItem' onClick={() => this.handleSort('order.orderData.items[0].sku')}>Item</button>
+        <button className='holder orderStatus' onClick={() => this.handleSort('order.orderData.status')}>Status</button>
       </div>
     )
 
@@ -49,12 +49,13 @@ export default class ViewOrderPage extends React.Component {
       orders.data = _.orderBy(this.state.orders.data, this.state.columnToSort, this.state.sortDirection)
 
       orders?.data.forEach( order => {
-        let date = new Date(order.orderData.date);
-        let dateString = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
+        let item = order.order.orderData.items[0].sku
+        let address = order.order.orderData.shipments[0].shipTo
+        let addressString = address.address1 + ", " + address.town + " " + address.isoCountry + ", " + address.postcode
 
-        var status = "Other"; 
+        var status = order.order.orderData.status; 
       
-        switch(order.orderData.status) {
+        switch(order.order.orderData.status) {
           case ('error'):
             status = "Error";
             break;
@@ -76,11 +77,12 @@ export default class ViewOrderPage extends React.Component {
         }
 
         //TODO: update search later when changing item from order._id to SKU name\
-        if (this.state.searchVal == "" || order._id.includes(this.state.searchVal))
+        if (this.state.searchVal == "" || 
+        order.order.orderData.items[0].sku.toLowerCase().includes(this.state.searchVal.toLowerCase()))
           tableEntries.push(<CustomTableEntry 
-            key={order._id}
-            date={dateString} 
-            item={order._id}
+            key={order._id} 
+            address={addressString}
+            item={item}
             status={status}/>)
           }
       );
@@ -152,7 +154,10 @@ export default class ViewOrderPage extends React.Component {
     .then(response => response.json())
     .then(_data => data = _data)
     .then(() => console.log(data))
-    .then(() => this.setState({orders: data}))
+    .then(() => this.setState({orders: data}, () => {
+      console.log("added data")
+      console.log(this.state.orders)
+    }))
     .catch((error) => {
     console.error('Error:', error);
     });
