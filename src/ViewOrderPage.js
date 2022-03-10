@@ -105,7 +105,7 @@ export default class ViewOrderPage extends React.Component {
         </div>
 
         <div className="PageControls">
-          Displaying entries {start} - {end} {'\u00A0'}
+          Displaying entries {start} - {end-1} {'\u00A0'}
 
           <button onClick={() => this.setState({index: 0})}>{"First"}</button>
 
