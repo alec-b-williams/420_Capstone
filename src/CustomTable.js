@@ -8,6 +8,7 @@ function CustomTableEntry(props) {
         <div className='holder orderID'> {props.orderid}</div>
         <div className='holder orderAddress'> {props.address}</div>
         <div className='holder orderItem'> {props.item}</div>
+        <div className='holder orderSKU'> {props.SKU}</div>
         <div className='holder orderStatus'> {props.status}</div>
       </div>
     );

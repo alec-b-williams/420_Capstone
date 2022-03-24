@@ -7,22 +7,24 @@
     flex-direction: column;
     justify-content: flex-start;
     
-    width: 70%;
+    width: 90%;
   }
 
 .tableEntry {
     display: flex;  
+    
     justify-content: space-evenly;
     border: 0.1px solid rgb(223, 223, 223);
 }
 
 .holder {
-    width: 33%;
+    width: 20%;
     margin: 10px;
+    
 }
 
 /* Header buttons */
-.orderID, .orderItem, .orderAddress, .orderStatus {
+.orderSKU, .orderID, .orderItem, .orderAddress, .orderStatus {
     border-style: none;
     font-size: 24px;
     font-weight: bold;
