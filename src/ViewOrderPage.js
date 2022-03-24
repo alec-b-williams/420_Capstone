@@ -36,6 +36,7 @@ export default class ViewOrderPage extends React.Component {
   render() {
     let header = (
       <div className='tableEntry' >
+        <button className='holder orderID' onClick={() => this.handleSort('id')}>Order ID</button>
         <button className='holder orderAddress' onClick={() => this.handleSort('order.orderData.shipments[0].shipTo.address1')}>Address</button>
         <button className='holder orderItem' onClick={() => this.handleSort('order.orderData.items[0].sku')}>Item</button>
         <button className='holder orderStatus' onClick={() => this.handleSort('order.orderData.status')}>Status</button>
@@ -49,6 +50,7 @@ export default class ViewOrderPage extends React.Component {
       orders.data = _.orderBy(this.state.orders.data, this.state.columnToSort, this.state.sortDirection)
 
       orders?.data.forEach( order => {
+        let id = order.id
         let item = order.order.orderData.items[0].sku
         let address = order.order.orderData.shipments[0].shipTo
         let addressString = address.address1 + ", " + address.town + " " + address.isoCountry + ", " + address.postcode
@@ -80,6 +82,7 @@ export default class ViewOrderPage extends React.Component {
         if (this.state.searchVal == "" || 
         order.order.orderData.items[0].sku.toLowerCase().includes(this.state.searchVal.toLowerCase()))
           tableEntries.push(<CustomTableEntry 
+            orderid={id}
             key={order._id} 
             address={addressString}
             item={item}

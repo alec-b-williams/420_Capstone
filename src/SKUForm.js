@@ -25,9 +25,9 @@ function SKUForm(props) {
     console.log("error generating CountryOptions")
   }
 
-  SKUOptions.push(
+  /*SKUOptions.push(
     <option value={-1}></option>
-  )
+  )*/
 
   try {
     props.SKUList?.data.forEach( SKU => {
@@ -99,9 +99,10 @@ function SKUForm(props) {
 
                 <div className="skuSelect">
                   SKU
-                  <select name="SKU" onChange={(o) => props.setSKU(o.target.value)} id="SKUCombo">
+                  <input type="text" name="SKU" list="SKUComboDatalist" id="SKUCombo" onChange={(o) => props.setSKU(o.target.value)}/>
+                  <datalist id="SKUComboDatalist">
                     {SKUOptions}
-                  </select>
+                  </datalist>
                 </div>
 
                 <div className="compSelect">

@@ -130,10 +130,11 @@
     margin-top: 30px;
 }
 
-.skuSelect select[name="SKU"] {
+.skuSelect input[name="SKU"] {
     width: 14.25em;
     margin-left: 125.3px;
     outline: none;
+    padding: -5px;
 }
 
 .compSelect {

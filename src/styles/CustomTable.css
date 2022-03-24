@@ -22,7 +22,7 @@
 }
 
 /* Header buttons */
-.orderItem, .orderAddress, .orderStatus {
+.orderID, .orderItem, .orderAddress, .orderStatus {
     border-style: none;
     font-size: 24px;
     font-weight: bold;
