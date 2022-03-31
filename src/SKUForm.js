@@ -54,6 +54,7 @@ function SKUForm(props) {
     console.log("Error generating ComponentOptions");
   }
   
+  /* Input bar/text in New Order form with input sanitization */
   return (props.trigger) ? (
       <div className="pop-up">
           <div className="popup-inner">

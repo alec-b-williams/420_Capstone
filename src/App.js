@@ -10,8 +10,13 @@ import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, } from 'react-bootstrap';
 
-export default class App extends React.Component {
+/* 
+   App will start from here, 
+   Switch utilizes navigo react module.  
+   Navbar utilizes react bootstrap 
+*/
 
+export default class App extends React.Component {
   render() {
     return (  
   <div>
@@ -32,8 +37,6 @@ export default class App extends React.Component {
       <NewOrderPage />
     </Route>
   </Switch>
-    
-    
 </div>
     );
   }

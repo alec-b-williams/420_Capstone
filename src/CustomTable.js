@@ -1,6 +1,7 @@
 import React from "react";
 import './styles/CustomTable.css';
 
+/* Table utilizes flexbox, this table will display the existing orders from siteflow */
 function CustomTableEntry(props) {
     return (
       <div className='tableEntry' >

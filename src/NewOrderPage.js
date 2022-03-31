@@ -196,6 +196,7 @@ export default class NewOrderPage extends React.Component {
         .then(() => this.createNotification(postData.status))
   }
 
+  /* A notification popup that notifies users based on their input in New Order */
   createNotification(handling) {
     switch (handling) {
       case '200':
