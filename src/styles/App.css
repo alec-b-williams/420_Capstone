@@ -7,6 +7,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Header bar containing title, 2 buttons */
 .navigationBar {
     background-color: rgb(56, 102, 255);
     height: 3.5em;
@@ -16,6 +17,7 @@
     font-weight: bold;
 }
 
+/*ViewOrder Button */
 .ViewOrders {
     margin-left: 0.5em;
     font-weight: bold;
@@ -28,6 +30,7 @@
     outline: none;
 }
 
+/* New Order button */
 .NewOrders  {
     margin-left: 0.5em;
     font-weight: bold;

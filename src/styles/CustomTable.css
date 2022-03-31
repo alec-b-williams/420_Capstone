@@ -1,3 +1,4 @@
+/* Controls the placement of View Order table*/
 .CustomTable {
     text-align: center;
     background-color: rgb(255, 255, 255);
@@ -9,19 +10,21 @@
     width: 100%;
   }
 
+/* Controls the spacing of the items inside the table */
 .tableEntry {
     display: flex;  
     justify-content: space-evenly;
     border: 0.1px solid rgb(223, 223, 223);
 }
 
+/* Controls the size of the columns*/
 .holder {
     width: 20%;
-    margin: 10px;
+    margin: 50px;
     
 }
 
-/* Header buttons */
+/* Header buttons: Order ID, Address, Item, etc */
 .orderSKU, .orderID, .orderItem, .orderAddress, .orderStatus {
     overflow-wrap: break-word;
     border-style: none;
@@ -30,6 +33,7 @@
     margin: 10px;
 }
 
+/* Pagination controls */
 div.PageControls button {
   margin: 10px;
   padding: 2px 10px;
