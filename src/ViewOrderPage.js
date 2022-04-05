@@ -3,6 +3,7 @@ import CustomTableEntry from './CustomTable';
 import TableButton from "./TableButton.js";
 import "./styles/ViewWrapper.css"
 import orderBy from 'lodash/orderBy';
+
 var _ = require('lodash');
 
 const invertDirect = {
@@ -113,21 +114,21 @@ export default class ViewOrderPage extends React.Component {
         <div className="PageControls">
           Displaying entries {start} - {end-1} {'\u00A0'}
 
-          <button onClick={() => this.setState({index: 0})}>{"First"}</button>
+          <button onClick={() => this.setState({index: 0})}>{"<<"}</button>
 
           <button onClick={() => {
             if (this.state.index > 0)
               this.setState({index: this.state.index - 1})
-          }}>{"Prev"}</button>
+          }}>{"<"}</button>
 
           {this.state.index + 1}
 
           <button onClick={() => {
             if (this.state.index < ~~(tableEntries.length / this.state.count))
               this.setState({index: this.state.index + 1})
-          }}>{"Next"}</button>
+          }}>{">"}</button>
 
-          <button onClick={() => this.setState({index: ~~(tableEntries.length / this.state.count)})}>{"Last"}</button>
+          <button onClick={() => this.setState({index: ~~(tableEntries.length / this.state.count)})}>{">>"}</button>
 
           Entries per page: {'\u00A0'}
 
