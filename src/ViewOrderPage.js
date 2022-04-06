@@ -100,7 +100,7 @@ export default class ViewOrderPage extends React.Component {
 
     return (
       <div id="ViewWrapper">
-        <div>
+        <div class="SearchBar">
           Search Items: {'\u00A0'}
           <input id="searchField" onChange={(v) => this.setState({searchVal: v.target.value}, ()=>console.log(this.state.searchVal))}></input>
         </div>
