@@ -35,7 +35,7 @@ export default class ViewOrderPage extends React.Component {
 
   render() {
     let header = (
-      <div className='tableEntry' >
+      <div data-testid = "table" className='tableEntry' >
         <button className='holder orderID' onClick={() => this.handleSort('id')}> Order ID <HiSelector color="rgb(56, 102, 255)"/></button>
         <button className='holder orderAddress' onClick={() => this.handleSort('order.orderData.shipments[0].shipTo.address1')}> Address <HiSelector color="rgb(56, 102, 255)"/></button>
         <button className='holder orderItem' onClick={() => this.handleSort('order.orderData.items[0].sku')}> Item <HiSelector color="rgb(56, 102, 255)"/> </button>
