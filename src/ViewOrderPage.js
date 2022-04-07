@@ -3,6 +3,7 @@ import CustomTableEntry from './CustomTable';
 import TableButton from "./TableButton.js";
 import "./styles/ViewWrapper.css"
 import orderBy from 'lodash/orderBy';
+import { HiSelector } from "react-icons/hi";
 
 var _ = require('lodash');
 
@@ -37,11 +38,11 @@ export default class ViewOrderPage extends React.Component {
   render() {
     let header = (
       <div className='tableEntry' >
-        <button className='holder orderID' onClick={() => this.handleSort('id')}>Order ID</button>
-        <button className='holder orderAddress' onClick={() => this.handleSort('order.orderData.shipments[0].shipTo.address1')}>Address</button>
-        <button className='holder orderItem' onClick={() => this.handleSort('order.orderData.items[0].sku')}>Item</button>
-        <button className='holder orderSKU' onClick={() => this.handleSort('order.orderData.items[0].productId')}>SKU</button>
-        <button className='holder orderStatus' onClick={() => this.handleSort('order.orderData.status')}>Status</button>
+        <button className='holder orderID' onClick={() => this.handleSort('id')}> Order ID <HiSelector color="rgb(56, 102, 255)"/></button>
+        <button className='holder orderAddress' onClick={() => this.handleSort('order.orderData.shipments[0].shipTo.address1')}> Address <HiSelector color="rgb(56, 102, 255)"/></button>
+        <button className='holder orderItem' onClick={() => this.handleSort('order.orderData.items[0].sku')}> Item <HiSelector color="rgb(56, 102, 255)"/> </button>
+        <button className='holder orderSKU' onClick={() => this.handleSort('order.orderData.items[0].productId')}> SKU <HiSelector color="rgb(56, 102, 255)"/> </button>
+        <button className='holder orderStatus' onClick={() => this.handleSort('order.orderData.status')}> Status <HiSelector color="rgb(56, 102, 255)"/> </button>
       </div>
     )
 
