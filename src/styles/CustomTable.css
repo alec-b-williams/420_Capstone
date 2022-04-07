@@ -16,6 +16,7 @@
   justify-content: flex-start;
   flex-grow: 1;
   width: 100%;
+  border-radius: 7.5px;
 }
 
 /* Controls the spacing of the items inside the table */
@@ -23,7 +24,7 @@
     display: flex;  
     justify-content: space-evenly;
     border-bottom: 0.1px solid rgb(223, 223, 223);
-    border-radius: 7.5px;
+    
 }
 
 /* Controls the size of the columns*/
@@ -58,12 +59,12 @@
 
 /* Columns of Order ID, Address, Item, etc */
 .orderSKU, .orderID, .orderItem, .orderAddress, .orderStatus {
-    overflow-wrap: break-word;
-    background-color: white;
-    border-style: none;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 10px;
+  overflow-wrap: break-word;
+  background-color: white;
+  border-style: none;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin: 10px;
 }
 
 div.SearchBar {
@@ -77,7 +78,7 @@ div.SearchBar {
   border: 0;
   font-size: large;
   padding: 0.5em;
-  
+  border-radius: 7.5px;
 }
 
 /* Pagination controls */
