@@ -13,8 +13,19 @@
     height: 3.5em;
 }
 
+body {
+  height: 100vh;
+  background-color: rgb(230, 230, 230);
+}
+
+
 .Title {
     font-weight: bold;
+}
+
+.appContainer{
+  height: 100vh;
+  background-color: rgb(230, 230, 230);
 }
 
 /*ViewOrder Button */

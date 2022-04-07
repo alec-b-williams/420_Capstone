@@ -12,7 +12,7 @@
     "http-proxy-middleware": "^2.0.1",
     "navigo-react": "^2.0.3",
     "react": "^17.0.2",
-    "react-bootstrap": "^2.1.2",
+    "react-bootstrap": "^2.2.3",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-notifications": "^1.7.2",

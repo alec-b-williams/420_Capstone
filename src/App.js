@@ -19,25 +19,25 @@ import { Navbar, Nav, } from 'react-bootstrap';
 export default class App extends React.Component {
   render() {
     return (  
-  <div>
-  <Navbar className="navigationBar" fixed="top"  variant="dark">
-    <Container>
-    <Navbar.Brand className="Title">Team 8 - HP</Navbar.Brand>
-    <Nav className="me-auto">
-      <Nav.Link href="/" data-navigo className="ViewOrders">View Orders</Nav.Link>
-      <Nav.Link href="/new" data-navigo className="NewOrders">New Order</Nav.Link>
-    </Nav>
-    </Container>
-  </Navbar>
-  <Switch>
-    <Route path="/">
-      <ViewOrderPage />
-    </Route>
-    <Route path="/new">
-      <NewOrderPage />
-    </Route>
-  </Switch>
-</div>
+  <div className='appContainer'>
+    <Navbar className="navigationBar" fixed="top"  variant="dark">
+      <Container>
+      <Navbar.Brand className="Title">Team 8 - HP</Navbar.Brand>
+      <Nav className="me-auto">
+        <Nav.Link href="/" data-navigo className="ViewOrders">View Orders</Nav.Link>
+        <Nav.Link href="/new" data-navigo className="NewOrders">New Order</Nav.Link>
+      </Nav>
+      </Container>
+    </Navbar>
+    <Switch>
+      <Route path="/">
+        <ViewOrderPage />
+      </Route>
+      <Route path="/new">
+        <NewOrderPage />
+      </Route>
+    </Switch>
+  </div>
     );
   }
 }

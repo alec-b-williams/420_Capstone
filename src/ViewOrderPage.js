@@ -101,50 +101,59 @@ export default class ViewOrderPage extends React.Component {
     return (
       <div id="ViewWrapper">
         <div class="SearchBar">
-          Search Items: {'\u00A0'}
-          <input id="searchField" onChange={(v) => this.setState({searchVal: v.target.value}, ()=>console.log(this.state.searchVal))}></input>
+          
+          <input 
+            id="searchField" 
+            placeholder='Search Items'
+            onChange={(v) => this.setState({searchVal: v.target.value}, ()=>console.log(this.state.searchVal))}
+            />
         </div>
 
-        <div className="CustomTable">
-          {header}
-          {tableEntries.slice(this.state.index * this.state.count, 
-            (this.state.index * this.state.count) + this.state.count)} 
+        <div className='CustomTableWrapper'>
+          <div className="CustomTable">
+            {header}
+            {tableEntries.slice(this.state.index * this.state.count, 
+              (this.state.index * this.state.count) + this.state.count)} 
+            
+          </div>
+          <div className="PageControls">
+            Displaying entries {start} - {end-1} {'\u00A0'}
+
+            <button onClick={() => this.setState({index: 0})}>{"<<"}</button>
+
+            <button onClick={() => {
+              if (this.state.index > 0)
+                this.setState({index: this.state.index - 1})
+            }}>{"<"}</button>
+
+            {this.state.index + 1}
+
+            <button onClick={() => {
+              if (this.state.index < ~~(tableEntries.length / this.state.count))
+                this.setState({index: this.state.index + 1})
+            }}>{">"}</button>
+
+            <button onClick={() => this.setState({index: ~~(tableEntries.length / this.state.count)})}>{">>"}</button>
+
+            Entries per page: {'\u00A0'}
+
+            <select id="rowCountSelect" onChange={(v) => {
+                console.log("updating count: " + v.target.value)
+                this.setState({
+                  count: parseInt(v.target.value), 
+                  index: 0,
+                })
+              }}>
+              <option value={10}>10</option>
+              <option value={25}>25</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+          </div>
         </div>
+        
 
-        <div className="PageControls">
-          Displaying entries {start} - {end-1} {'\u00A0'}
-
-          <button onClick={() => this.setState({index: 0})}>{"<<"}</button>
-
-          <button onClick={() => {
-            if (this.state.index > 0)
-              this.setState({index: this.state.index - 1})
-          }}>{"<"}</button>
-
-          {this.state.index + 1}
-
-          <button onClick={() => {
-            if (this.state.index < ~~(tableEntries.length / this.state.count))
-              this.setState({index: this.state.index + 1})
-          }}>{">"}</button>
-
-          <button onClick={() => this.setState({index: ~~(tableEntries.length / this.state.count)})}>{">>"}</button>
-
-          Entries per page: {'\u00A0'}
-
-          <select id="rowCountSelect" onChange={(v) => {
-              console.log("updating count: " + v.target.value)
-              this.setState({
-                count: parseInt(v.target.value), 
-                index: 0,
-              })
-            }}>
-            <option value={10}>10</option>
-            <option value={25}>25</option>
-            <option value={50}>50</option>
-            <option value={100}>100</option>
-          </select>
-        </div>
+        
       </div>
     );
   }
