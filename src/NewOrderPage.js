@@ -63,7 +63,7 @@ export default class NewOrderPage extends React.Component {
   }
 
   updateSKU(SKU) {
-    if (SKU != -1) {
+    if (SKU !== -1) {
       console.log("Setting new SKU: " + SKU);
       this.setState({selSKU: SKU});
       this.fetchComponents(SKU);
@@ -71,7 +71,7 @@ export default class NewOrderPage extends React.Component {
   }
 
   updateComponent(Component) {
-    if (Component != -1) {
+    if (Component !== -1) {
       console.log("Setting new Component: " + Component);
       this.setState({selComponent: Component});
       this.fetchComponents(Component);

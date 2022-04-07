@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import CustomTableEntry from './CustomTable';
-import TableButton from "./TableButton.js";
-import "./styles/ViewWrapper.css"
-import orderBy from 'lodash/orderBy';
+import "./styles/ViewWrapper.css";
 import { HiSelector } from "react-icons/hi";
 
 var _ = require('lodash');
@@ -80,10 +78,11 @@ export default class ViewOrderPage extends React.Component {
           case ('cancelled'):
             status = "Cancelled";
             break;
+          default:
         }
 
         //TODO: update search later when changing item from order._id to SKU name\
-        if (this.state.searchVal == "" || 
+        if (this.state.searchVal === "" || 
         order.order.orderData.items[0].sku.toLowerCase().includes(this.state.searchVal.toLowerCase()))
           tableEntries.push(<CustomTableEntry 
             orderid={id}
