@@ -55,7 +55,7 @@ function SKUForm(props) {
   
   /* Input bar/text in New Order form with input sanitization */
   return (props.trigger) ? (
-    <div className="pop-up">
+    <div id="pop-up">
       <div className="popup1">
         <form id="sku-selection"> 
           <header className='title'> Contact Info </header>
@@ -87,7 +87,7 @@ function SKUForm(props) {
 
       <div className="popup2">
         <form id="sku-selection"> 
-          <header className='title2'> Location </header>
+          <header className='title'> Location </header>
           <div className="address">
           <MdLocationOn color="rgb(56, 102, 255)" size="0.75em"/> Address 
             <input 
@@ -136,7 +136,7 @@ function SKUForm(props) {
      
       <div className="popup3">
         <form id="sku-selection"> 
-          <header className='title3'> Parts </header>
+          <header className='title'> Parts </header>
           
           <div className="fileLink">
             File URL
@@ -169,6 +169,10 @@ function SKUForm(props) {
           </div>
         </form>
         {props.children}
+      </div>
+
+      <div id="SKUButtonWrapper">
+        <button className="SKUButton" onClick={() => props.onClick()}> Create Order </button>
       </div>
     </div>
   ) : "";

@@ -1,19 +1,1 @@
 /* Controls the send button in New Order page */
-.SKUButton {
-    background-color: rgb(56, 102, 255);
-    font-size: 1.2em;
-    font-weight: bold;
-    height: 50px;
-    width: 300px;
-    position: absolute;
-    left: 52.25em;
-    top: 32.5em;
-    border-radius: 10px;
-    color:white;
-    border: none;
-    outline: none;
-}
-
-.SKUButton:hover {
-    background-color: rgb(0, 60, 255);
-}

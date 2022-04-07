@@ -41,7 +41,7 @@ export default class NewOrderPage extends React.Component {
 
       <div>
         <div data-testid = "SKU" className="SKUForm">
-          <button className="SKUButton" /*onClick={this.createNotification('error')}*/ onClick={this.postOrder}> Create Order </button>
+          
           <SKUForm
             SKUList={this.state.SKUs}
             ComponentList={this.state.components}
@@ -54,7 +54,8 @@ export default class NewOrderPage extends React.Component {
             setZip={(v) => this.setState({zip: v})}
             setCountry={(v) => this.setState({country: v})}
             setURL={(v) => this.setState({fileURL: v})}
-            trigger={true}>
+            trigger={true}
+            onClick={() => this.postOrder()}>
           </SKUForm>
         </div>
         <NotificationContainer/>
