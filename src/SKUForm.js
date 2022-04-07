@@ -1,6 +1,9 @@
 import React from 'react'
 import countries from 'countries-list'
 import './styles/SKUForm.css';
+import { IoMdPerson, IoMdPeople } from "react-icons/io";
+import { MdLocationOn, MdLocationCity, MdShareLocation } from "react-icons/md";
+import { TiLocationArrow } from "react-icons/ti";
 
 function SKUForm(props) {
   let CountryOptions = [];
@@ -53,23 +56,40 @@ function SKUForm(props) {
   /* Input bar/text in New Order form with input sanitization */
   return (props.trigger) ? (
     <div className="pop-up">
-      <div className="popup-inner">
+      <div className="popup1">
         <form id="sku-selection"> 
-          <header className='title'> Shipping Info </header>
+          <header className='title'> Contact Info </header>
           <div className="userName">
-            Name 
+          <IoMdPerson color="rgb(56, 102, 255)" size="0.75em"/> Name 
             <input 
               type="text" 
               onKeyPress={(event) => { if(!/[a-zA-Z\s\-']/.test(event.key)) { event.preventDefault(); }}} 
-              maxLength="20" 
+              maxLength="28" 
               id="NameField" 
               placeholder="" 
               onChange={(o) => props.setName(o.target.value)}>  
             </input>
           </div>
 
+          <div className="companyName">
+          <IoMdPeople color="rgb(56, 102, 255)" size="0.75em"/> Company
+            <input 
+              type="text" 
+              id="Company" 
+              maxLength="28" 
+              placeholder="" 
+              onChange={(o) => props.setCompany(o.target.value)}>
+            </input>
+          </div>
+        </form>
+        {props.children}
+      </div>
+
+      <div className="popup2">
+        <form id="sku-selection"> 
+          <header className='title2'> Location </header>
           <div className="address">
-            Address 
+          <MdLocationOn color="rgb(56, 102, 255)" size="0.75em"/> Address 
             <input 
               type="text" 
               id="AddressField" 
@@ -79,19 +99,8 @@ function SKUForm(props) {
             </input>
           </div>
 
-          <div className="companyName">
-            Company
-            <input 
-              type="text" 
-              id="Company" 
-              maxLength="20" 
-              placeholder="" 
-              onChange={(o) => props.setCompany(o.target.value)}>
-            </input>
-          </div>
-
           <div className="city">
-            City
+          <MdLocationCity color="rgb(56, 102, 255)" size="0.75em"/> City
             <input 
               type="text" 
               onKeyPress={(event) => { if(!/[a-zA-Z\s\-']/.test(event.key)) { event.preventDefault(); }}} 
@@ -103,7 +112,7 @@ function SKUForm(props) {
           </div>
 
           <div className="postalCode">
-            Postal/Zip
+          <TiLocationArrow color="rgb(56, 102, 255)" size="0.75em"/> Postal Code
             <input 
               type="text" 
               onKeyPress={(event) => { if(!/[0-9\s-]/.test(event.key)) { event.preventDefault(); }}} 
@@ -115,12 +124,20 @@ function SKUForm(props) {
           </div>
 
           <div className="country">
-            Country
+          <MdShareLocation color="rgb(56, 102, 255)" size="0.75em"/> Country
             <select name="ISO" id="ISOCombo" onChange={(o) => props.setCountry(o.target.value)}>
               {CountryOptions}
             </select>
           </div>
 
+        </form>
+        {props.children}
+      </div>
+     
+      <div className="popup3">
+        <form id="sku-selection"> 
+          <header className='title3'> Parts </header>
+          
           <div className="fileLink">
             File URL
             <input 
