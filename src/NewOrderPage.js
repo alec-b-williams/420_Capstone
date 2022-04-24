@@ -1,13 +1,10 @@
 import React from 'react';
 import SKUForm from './SKUForm.js';
-import './styles/NewOrderPage.css';
 import { NotificationManager, NotificationContainer } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 
 export default class NewOrderPage extends React.Component {
-  // We can add error case if need to
-
 
   constructor(props) {
     super(props);

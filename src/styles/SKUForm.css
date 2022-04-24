@@ -15,7 +15,7 @@
   align-content: flex-start;
 }
 
-/* Main body of the New Order box */
+/* Main body of the New Order boxes */
 .popup1, .popup2, .popup3  {
   background-color: white;
   border-radius: 7.5px;
@@ -55,7 +55,7 @@
     text-align: center;
 }
 
-/* Everything below will control the individual user input */
+/* Everything below will control the individual user inputs */
 .userName {
     font-size: 1.5em;
     font-weight: bold;
@@ -85,6 +85,7 @@
     margin-left: 67px;
 }
 
+/* Below are the 2nd Box controls */
 .title2 {
     font-size: 1.5em;
     font-weight: bold;
@@ -150,7 +151,7 @@
     outline: none;
 }
 
-/* Header of the box */
+/* Below are the 3rd Box controls */
 .title3 {
     font-size: 1.5em;
     font-weight: bold;
